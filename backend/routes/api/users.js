@@ -13,7 +13,8 @@ console.log(process.env);
 const db = require('../../models');
 
 // GET api/users/test (Public)
-router.get('/test', (req, res) => {
+router.get('/test', (req, res) => 
+{
     res.json({ msg: 'User endpoint OK'});
 });
 
@@ -96,7 +97,8 @@ router.post('/login', (req, res) =>
                         id: user.id,
                         username: user.username,
                         name: user.name,
-                        email: user.email
+                        email: user.email,
+                        bBombData: user.bBombData
                     };
 
                     // Sign token
