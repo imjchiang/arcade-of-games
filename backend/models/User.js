@@ -29,7 +29,7 @@ const UserSchema = new Schema(
         type: Date,
         default: Date.now()
     },
-    balloonBomberData:
+    bBombData:
     {
         type: Schema.ObjectId,
         ref: "BBombData"
