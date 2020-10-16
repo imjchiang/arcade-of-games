@@ -29,6 +29,11 @@ const UserSchema = new Schema(
         type: Date,
         default: Date.now()
     },
+    gamesPlayed: 
+    [{
+        type: String,
+        default: ""
+    }],
     bBombData:
     {
         type: Schema.ObjectId,
