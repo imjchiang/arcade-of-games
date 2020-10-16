@@ -5,25 +5,30 @@ import setAuthToken from '../utils/setAuthToken';
 import { Redirect } from 'react-router-dom';
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const Login = (props) => {
+const Login = (props) => 
+{
     let [username, setUsername] = useState('');
     let [password, setPassword] = useState('');
 
-    let handleUsername = (e) => {
+    let handleUsername = (e) => 
+    {
         setUsername(e.target.value);
     }
 
-    let handlePassword = (e) => {
+    let handlePassword = (e) => 
+    {
         setPassword(e.target.value);
     }
 
-    let handleSubmit = (e) => {
+    let handleSubmit = (e) => 
+    {
         e.preventDefault();
 
         const userData = { username, password };
 
         axios.post(`${REACT_APP_SERVER_URL}/api/users/login`, userData)
-        .then(response => {
+        .then(response => 
+        {
             const { token } = response.data;
             // Save token to localStorage
             localStorage.setItem('jwtToken', token);

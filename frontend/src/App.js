@@ -38,7 +38,9 @@ function App()
         let token;
         if (!localStorage.getItem('jwtToken')) {
             setIsAuthenticated(false);
-        } else {
+        } 
+        else 
+        {
             token = jwt_decode(localStorage.getItem('jwtToken'));
             setAuthToken(localStorage.jwtToken);
             setCurrentUser(token);
@@ -46,13 +48,15 @@ function App()
         }
     }, []);
 
-    const nowCurrentUser = (userData) => {
+    const nowCurrentUser = (userData) => 
+    {
         console.log('nowCurrentUser is working...');
         setCurrentUser(userData);
         setIsAuthenticated(true);
     };
 
-    const handleLogout = () => {
+    const handleLogout = () => 
+    {
         if (localStorage.getItem('jwtToken')) {
             localStorage.removeItem('jwtToken');
             setCurrentUser(null);
