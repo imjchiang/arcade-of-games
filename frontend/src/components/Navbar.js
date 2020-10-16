@@ -18,10 +18,21 @@ const Navbar = (props) => {
                         <li className="nav-item">
                             <NavLink className="nav-link"  to="/about">About</NavLink>
                         </li>
+                        {
+                            props.isAuth
+                            ? <li className="nav-item">
+                                <NavLink className="nav-link" to="/games/explore">Explore/Add Games</NavLink>
+                            </li>
+                            :
+                            <></>
+                        }
                     </ul>
                     {
                         props.isAuth 
                         ? <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/games/play">Play Games</NavLink>
+                            </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link"  to="/profile">Profile</NavLink>
                             </li>
