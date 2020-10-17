@@ -3,7 +3,7 @@ let hitboxRadius = 10;
 let xAlignment = hitboxRadius + 0.9;
 let yAlignment = hitboxRadius + 1.4;
 
-export function draw(ctx)
+export function drawInitPlayer(ctx)
 {
     console.log("attempting to draw")
     ctx.beginPath();

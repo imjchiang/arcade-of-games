@@ -1,9 +1,10 @@
 import React from 'react'
-import { useCanvas } from './hooks/useCanvas';
+import { useGameCanvas, useBgCanvas } from './hooks/useCanvas';
 
 const Bbomb = (props) => 
 {
-    const [ initialPos, setInitialPos, canvasRef, canvasWidth, canvasHeight ] = useCanvas();
+    const [ initPlayerPos, setInitPlayerPos, gameCanvasRef, canvasWidth, canvasHeight ] = useGameCanvas();
+    const [ initBg, setInitBg, bgCanvasRef, bgCanvasWidth, bgCanvasHeight ] = useBgCanvas();
 
     // const handleStartGame=(event)=>{
     //     // on each click get current mouse location 
@@ -14,36 +15,47 @@ const Bbomb = (props) =>
 
     const handleStartGame = () =>
     {
-        setInitialPos(true);
+        setInitPlayerPos(true);
+        setInitBg(true);
     };
     
     const handleRestartGame = () =>
     {
         // quit game
-        setInitialPos(false);
+        setInitPlayerPos(false);
+        setInitBg(false);
+
         // start game
         setTimeout(() =>
         {
-            setInitialPos(true);
+            setInitPlayerPos(true);
+            setInitBg(true);
         }, 750);
     }
 
-    const handleQuitGame = (event) =>
+    const handleQuitGame = () =>
     {
-        setInitialPos(false);
+        setInitPlayerPos(false);
+        setInitBg(false);
     };
   
     return (
         <main className="App-main" >
             <canvas 
-                className="App-canvas"
-                ref={canvasRef}
+                className="App-canvas-game"
+                ref={gameCanvasRef}
                 width={canvasWidth}
                 height={canvasHeight} />
+            
+            <canvas 
+                className="App-canvas-bg"
+                ref={bgCanvasRef}
+                width={bgCanvasWidth}
+                height={bgCanvasHeight} />
         
             <div className="button">
                 {
-                    initialPos
+                    initPlayerPos
                     ?
                     <>
                         <button onClick={handleRestartGame}> RESTART </button>

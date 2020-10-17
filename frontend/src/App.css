@@ -27,11 +27,19 @@ body {
   width: fit-content;
 }
 
-.App-canvas{
-  background-color: cornsilk;
+.App-canvas-game
+{
+  position: absolute;
+  background-color: rgba(219, 187, 58, 0.7);
   border: 5px;
   border-color: black;
+}
 
+.App-canvas-bg
+{
+  background-color: green;
+  border: 5px;
+  border-color: black;
 }
 
 button {
