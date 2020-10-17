@@ -16,6 +16,8 @@ import Playgames from "./components/Playgames";
 import Home from './components/Home';
 import About from './components/About';
 
+import Bbomb from "./components/games/bbomb/Bbomb";
+
 import './App.css';
 
 const PrivateRoute = ({ component: Component, ...rest }) => 
@@ -87,6 +89,12 @@ function App()
                         exact
                         path="/games/play" 
                         render={ (props) => <Playgames {...props} user={currentUser}/>} 
+                    />
+
+                    <Route 
+                        exact
+                        path="/game/bbomb" 
+                        render={ (props) => <Bbomb {...props} user={currentUser}/>} 
                     />
 
                     <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
