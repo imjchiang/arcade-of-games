@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGameCanvas, useBgCanvas } from './hooks/useCanvas';
+import { useGameCanvas, useBgCanvas } from './useCanvas';
 
 const Bbomb = (props) => 
 {

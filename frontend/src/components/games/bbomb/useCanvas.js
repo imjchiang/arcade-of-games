@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import {drawInitPlayer} from "../player/draw";
-import {drawBg} from "../background/draw";
+import {drawInitPlayer} from "./drawPlayer";
+import background from "./pictures/background/8bit-background.jpg"
 
 // Scaling Constants for Canvas
 export const canvasWidth = 1200;
@@ -39,13 +39,21 @@ export function useBgCanvas()
     {
         const canvasObj = bgCanvasRef.current;
         const bgCtx = canvasObj.getContext('2d');
+        
+        var bgImage = new Image();
+        bgImage.src = background;
+        
+        
         // clear the canvas area before rendering the coordinates held in state
         bgCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 
         // draw initial player if true
         if (initBg)
         {
-            drawBg(bgCtx, bgXPos, canvasWidth, canvasHeight);
+            bgImage.onload = () =>
+            {
+                bgCtx.drawImage(bgImage, bgXPos, 0, canvasWidth, canvasHeight);
+            }
             bgXPos += scrollSpeed
         }
     });
