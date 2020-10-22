@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Grid from "./Grid"
+
 import board from "./pictures/board.jpg";
 
 const Gomoku = (props) => 
@@ -7,6 +10,8 @@ const Gomoku = (props) =>
         <div className="gomoku">
             <img id="gomoku-board" src={board} />
         
+            <Grid />
+
             {/* <div className="button">
                 {
                     initPlayerPos
