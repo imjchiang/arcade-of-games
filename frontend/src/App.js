@@ -17,7 +17,7 @@ import Home from './components/Home';
 import About from './components/About';
 
 import Bbomb from "./components/games/bbomb/Bbomb";
-import Gomoku from './components/games/gomoku/gomoku';
+import Gomoku from './components/games/gomoku/Gomoku';
 
 import './App.css';
 
