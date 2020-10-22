@@ -1,62 +1,82 @@
-html {
-  position: relative;
-  min-height: 100%;
+html 
+{
+    position: relative;
+    min-height: 100%;
 }
-body {
-  margin-bottom: 60px; /* Margin bottom by footer height */
+
+body 
+{
+    margin-bottom: 60px; /* Margin bottom by footer height */
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
+
+.footer 
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
 }
 
 
 
-.App {
-  text-align: center;
+.App 
+{
+    text-align: center;
 }
 
-.App-main{
-  background-color: rgb(116, 223, 255);
-  border-radius: 0.5vw;
-  padding: 20px;
-  max-height: 90vh;
-  width: fit-content;
+.App-main
+{
+    background-color: rgb(116, 223, 255);
+    border-radius: 0.5vw;
+    padding: 20px;
+    max-height: 90vh;
+    width: fit-content;
 }
 
 .App-canvas-game
 {
-  position: absolute;
-  background-color: rgba(219, 187, 58, 0.7);
-  border: 5px;
-  border-color: black;
+    position: absolute;
+    background-color: rgba(219, 187, 58, 0.7);
+    border: 5px;
+    border-color: black;
 }
 
 .App-canvas-bg
 {
-  background-color: green;
-  border: 5px;
-  border-color: black;
+    background-color: green;
+    border: 5px;
+    border-color: black;
 }
 
-button {
-  background-color: rgb(34, 20, 95);
-  border: 1px solid rgb(124, 110, 185);
-  color: white;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 5px;
+button 
+{
+    background-color: rgb(34, 20, 95);
+    border: 1px solid rgb(124, 110, 185);
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-button:hover{
-  background-color: rgb(104, 80, 212);
+button:hover
+{
+    background-color: rgb(104, 80, 212);
+}
+
+.gomoku
+{
+    display: flex;
+    justify-content: center;
+}
+
+#gomoku-board
+{
+    max-width: 90vh;
 }

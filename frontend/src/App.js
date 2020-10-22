@@ -17,6 +17,7 @@ import Home from './components/Home';
 import About from './components/About';
 
 import Bbomb from "./components/games/bbomb/Bbomb";
+import Gomoku from './components/games/gomoku/gomoku';
 
 import './App.css';
 
@@ -95,6 +96,12 @@ function App()
                         exact
                         path="/game/bbomb" 
                         render={ (props) => <Bbomb {...props} user={currentUser}/>} 
+                    />
+
+                    <Route 
+                        exact
+                        path="/game/gomoku" 
+                        render={ (props) => <Gomoku {...props} user={currentUser}/>} 
                     />
 
                     <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
