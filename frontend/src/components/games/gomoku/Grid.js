@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import GomokuBlank from "./pictures/gomoku-blank.png";
 
 const Grid = (props) => 
 {
@@ -16,7 +17,7 @@ const Grid = (props) =>
                             {
                                 if (box === undefined || box === null)
                                 {
-                                    return <span id={idx + "," + idy} className="gomoku-box">{idx}:{idy}__</span>
+                                    return <img id={idx + "," + idy} className="gomoku-box" src={GomokuBlank} />
                                 }
                                 else if (box === "x")
                                 {
@@ -39,9 +40,9 @@ const Grid = (props) =>
         </div>
     
     return (
-        <div className="grid">
+        <>
             {gridCreate}
-        </div>
+        </>
     );
 }
 
