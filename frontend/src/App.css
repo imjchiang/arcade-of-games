@@ -80,3 +80,20 @@ button:hover
 {
     max-width: 90vh;
 }
+
+.gomoku-grid
+{
+    margin-top: 2.15vh;
+    position: absolute;
+}
+
+.gomoku-row
+{
+    height: 4.5vh;
+}
+
+.gomoku-box
+{
+    font-size: 0.7vw;
+    width: 4.5vh;
+}
