@@ -103,3 +103,19 @@ button:hover
 {
     opacity: 0.5;
 }
+
+.gomoku-start
+{
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gomoku-start-button
+{
+
+}

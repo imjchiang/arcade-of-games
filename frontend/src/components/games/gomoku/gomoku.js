@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Grid from "./Grid"
+import Grid from "./Grid";
+import GameStart from "./GameStart";
 
 import board from "./pictures/board.jpg";
 
@@ -11,7 +12,8 @@ const Gomoku = (props) =>
             <img id="gomoku-board" src={board} />
         
             <Grid />
-
+            <GameStart />
+            
             {/* <div className="button">
                 {
                     initPlayerPos
