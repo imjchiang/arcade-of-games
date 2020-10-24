@@ -2,14 +2,10 @@ import React, {useState, useEffect} from 'react';
 
 const GameStart = (props) => 
 {
-    const [start, setStart] = useState(false);
-    const [, updateState] = React.useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-
     const handleClick = () =>
     {
-        let status = start;
-        setStart(!status);
+        let status = props.start;
+        props.setStart(!status);
     }
 
     const startPanel = 
@@ -18,7 +14,7 @@ const GameStart = (props) =>
         </div>
 
     return (
-        !start
+        !props.start
         ?
         startPanel
         :
