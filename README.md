@@ -14,6 +14,6 @@ Get five of your pieces in a row.
 Building
 
 ## Installation (for local use)
-1. Fork and Clone the git repository at [Link Here](https://github.com/imjchiang/balloon-bomber-refreshed)
+1. Fork and Clone the git repository at [Link Here](https://github.com/imjchiang/arcade-of-games)
 2. Change Directory to the backend folder and use command ```npm i``` to install all the necessary node modules
 3. add a .env file to the backend folder and add ```JWT_SECRET="RANDOMSTRINGHERE"``` and ```MONGO_URI="mongodb://localhost:27017/databaseNameHere"``` on separate lines and ```ATLAS_URI="mongodb+srv://exitcodeZero:reactiveMangos@exitcodezero.imblw.azure.mongodb.net/exitcodeZero?retryWrites=true&w=majority"``` if you want to deploy your database through ATLAS
