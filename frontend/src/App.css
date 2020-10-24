@@ -115,7 +115,20 @@ button:hover
     align-items: center;
 }
 
-.gomoku-start-button
+.gomoku-quit-button
 {
+    margin: 2vh;
+    margin-bottom: 10vh;
+    display: flex;
+    justify-content: center;
+}
 
+.confirm-quit
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
