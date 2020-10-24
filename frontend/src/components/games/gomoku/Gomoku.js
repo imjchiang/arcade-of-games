@@ -20,7 +20,7 @@ const Gomoku = (props) =>
             <div className="gomoku">
                 <img id="gomoku-board" src={board} />
                 <Grid grid={grid} turn={turn} setGrid={setGrid} setTurn={setTurn} />
-                <GameConfirmQuit start={start} quit={quit} setStart={setStart} setQuit={setQuit} />
+                <GameConfirmQuit start={start} quit={quit} setStart={setStart} setQuit={setQuit} setGrid={setGrid} />
                 <GameRandom start={start} quit={quit} setQuit={setQuit} />
                 <GameStart start={start} setStart={setStart}/>
             </div>

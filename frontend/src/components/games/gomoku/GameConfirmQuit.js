@@ -2,7 +2,7 @@ import React from 'react';
 
 const GameConfirmQuit = (props) => 
 {
-    const handleClickQ = () =>
+    const handleClickC = () =>
     {
         let status = props.quit;
         props.setQuit(!status);
@@ -14,6 +14,7 @@ const GameConfirmQuit = (props) =>
         let statusQ = props.quit;
         props.setStart(!statusS);
         props.setQuit(!statusQ);
+        props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 
     const confirmQuit = 
@@ -23,7 +24,7 @@ const GameConfirmQuit = (props) =>
                 <h3>Are You Sure?</h3>
                 <div>
                     <button onClick={handleQuit}>Quit</button>
-                    <button onClick={handleClickQ}>Continue</button>
+                    <button onClick={handleClickC}>Continue</button>
                 </div>
             </div>
         </>
