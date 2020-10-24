@@ -17,13 +17,16 @@ const GameConfirmQuit = (props) =>
     }
 
     const confirmQuit = 
-        <div className="confirm-quit">
-            <h3>Are You Sure?</h3>
-            <div>
-                <button onClick={handleQuit}>Quit</button>
-                <button onClick={handleClickQ}>Continue</button>
+        <>
+            <div className="confirm-quit-bg"></div>
+            <div className="confirm-quit">
+                <h3>Are You Sure?</h3>
+                <div>
+                    <button onClick={handleQuit}>Quit</button>
+                    <button onClick={handleClickQ}>Continue</button>
+                </div>
             </div>
-        </div>
+        </>
 
     return (
         <>
