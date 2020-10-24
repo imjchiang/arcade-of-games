@@ -1,11 +1,14 @@
-# Balloon Bomber Refreshed
+# Arcade of Games
 
 ## Purpose
-To create an interface where a user could sign up and play games (for now just limited to balloon bomber) and store their game data under their profile and user data.
+To create an interface where a user could sign up and play games (for now just limited to gomoku and balloon bomber) and store their game data under their profile and user data.
 
 ## Games
 ### Balloon Bomber
 Fly as a balloon or another flying entity (which can be unlocked as you progress) and attack/bomb enemy entities while dodging projectiles shot from those enemies.
+
+### Gomoku
+Get five of your pieces in a row.
 
 ## Status
 Building
