@@ -5,27 +5,25 @@ import GomokuWhite from "./pictures/gomoku-white.png";
 
 const Grid = (props) => 
 {
-    const [grid, setGrid] = useState(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
-    const [turn, setTurn] = useState("b");
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
     const handleClick = (idx, idy) =>
     {
         // console.log(idx, idy);
-        let matrix = grid;
-        if (turn == "b")
+        let matrix = props.grid;
+        if (props.turn === "b")
         {
             matrix[idx][idy] = "x";
-            setTurn("w");
+            props.setTurn("w");
         }
         else
         {
             matrix[idx][idy] = "o";
-            setTurn("b");
+            props.setTurn("b");
         }
 
-        setGrid(matrix);
+        props.setGrid(matrix);
         // console.log(matrix);
         // console.log(grid);
         forceUpdate();
@@ -34,9 +32,9 @@ const Grid = (props) =>
     const handleEnter = (idx, idy) =>
     {
         // console.log(idx, idy);
-        let matrix = grid;
+        let matrix = props.grid;
 
-        if (turn == "b")
+        if (props.turn === "b")
         {
             matrix[idx][idy] = "hoverB";
         }
@@ -45,7 +43,7 @@ const Grid = (props) =>
             matrix[idx][idy] = "hoverW"
         }
 
-        setGrid(matrix);
+        props.setGrid(matrix);
         // console.log(matrix);
         // console.log(grid);
         forceUpdate();
@@ -54,10 +52,10 @@ const Grid = (props) =>
     const handleExit = (idx, idy) =>
     {
         // console.log(idx, idy);
-        let matrix = grid;
+        let matrix = props.grid;
         matrix[idx][idy] = null;
         
-        setGrid(matrix);
+        props.setGrid(matrix);
         // console.log(matrix);
         // console.log(grid);
         forceUpdate();
@@ -67,7 +65,7 @@ const Grid = (props) =>
     return (
         <div className="gomoku-grid">
             {
-                grid.map((row, idx) =>
+                props.grid.map((row, idx) =>
                 {
                     return(
                         <div id={idx} className="gomoku-row">
