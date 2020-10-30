@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameQuit = (props) => 
+const GameQuitPanel = (props) => 
 {
     const handleClickQ = () =>
     {
@@ -10,8 +10,8 @@ const GameQuit = (props) =>
 
     const handleClickR = () =>
     {
-        let status = props.quit;
-        props.setStart(!status);
+        let status = props.restart;
+        props.setRestart(!status);
     }
 
     const quitPanel = 
@@ -23,7 +23,7 @@ const GameQuit = (props) =>
     return (
         <>
             {
-                props.start && !props.quit
+                props.start && !props.quit && !props.restart
                 ?
                 quitPanel
                 :
@@ -33,4 +33,4 @@ const GameQuit = (props) =>
     );
 }
 
-export default GameQuit;
+export default GameQuitPanel;
