@@ -3,7 +3,7 @@ import GomokuBlank from "./pictures/gomoku-blank.png";
 import GomokuBlack from "./pictures/gomoku-black.png";
 import GomokuWhite from "./pictures/gomoku-white.png";
 
-import GomokuWin, { fiveInRowHoriz } from "./GomokuWin";
+import GomokuWin, { fiveInRowHoriz, fiveInRowVert } from "./GomokuWin";
 
 const Grid = (props) => 
 {
@@ -26,6 +26,7 @@ const Grid = (props) =>
         }
 
         fiveInRowHoriz(props.grid);
+        fiveInRowVert(props.grid);
 
         props.setGrid(matrix);
         // console.log(matrix);
