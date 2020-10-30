@@ -23,7 +23,7 @@ const GameQuitPanel = (props) =>
     return (
         <>
             {
-                props.start && !props.quit && !props.restart
+                props.start && !props.quit && !props.restart && props.randomize !== null
                 ?
                 quitPanel
                 :
