@@ -24,9 +24,10 @@ const GameRandom = (props) =>
                 props.start && props.randomize === null
                 ?
                 <>
-                    <div className="gomoku-start">
+                    <div className="randomize-bg"></div>
+                    <div className="begin-randomized">
                         <h3>{random === 1 ? "Black" : "White"} Starts!</h3>
-                        <button className="gomoku-start-button" onClick={handleClick}>BEGIN!</button>
+                        <button onClick={handleClick}>BEGIN!</button>
                     </div>
                 </>
                 :

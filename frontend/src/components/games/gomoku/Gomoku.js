@@ -28,10 +28,10 @@ const Gomoku = (props) =>
                 <GameRandom start={start} quit={quit} randomize={randomize} setQuit={setQuit} setRandomize={setRandomize} setTurn={setTurn} />
 
                 <GameConfirmQuit start={start} quit={quit} setStart={setStart} setQuit={setQuit} setGrid={setGrid} setRandomize={setRandomize} />
-                <GameConfirmRestart start={start} restart={restart} setStart={setStart} setRestart={setRestart} setGrid={setGrid} />
+                <GameConfirmRestart start={start} restart={restart} randomize={randomize} setStart={setStart} setRestart={setRestart} setGrid={setGrid} setTurn={setTurn} />
                 <GameStart start={start} setStart={setStart}/>
             </div>
-            <GameQuitPanel start={start} restart={restart} quit={quit} setStart={setStart} setRestart={setRestart} setQuit={setQuit} setGrid={setGrid} />
+            <GameQuitPanel start={start} restart={restart} quit={quit} randomize={randomize} setStart={setStart} setRestart={setRestart} setQuit={setQuit} setGrid={setGrid} />
         </>
     );
 }

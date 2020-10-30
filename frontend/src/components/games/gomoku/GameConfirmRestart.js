@@ -11,14 +11,15 @@ const GameConfirmRestart = (props) =>
     const handleRestart = () =>
     {
         let statusR = props.restart;
+        props.setTurn(props.randomize);
         props.setRestart(!statusR);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 
     const confirmRestart = 
         <>
-            <div className="confirm-quit-bg"></div>
-            <div className="confirm-quit">
+            <div className="confirm-restart-bg"></div>
+            <div className="confirm-restart">
                 <h3>Are You Sure?</h3>
                 <div>
                     <button onClick={handleRestart}>Restart</button>

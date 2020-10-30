@@ -123,7 +123,7 @@ button:hover
     justify-content: center;
 }
 
-.confirm-quit
+.confirm-quit, .confirm-restart, .begin-randomized
 {
     margin: 38vh 0 40vh 0;
     position: absolute;
@@ -134,7 +134,7 @@ button:hover
     border-radius: 2vh;
 }
 
-.confirm-quit-bg
+.confirm-quit-bg, .confirm-restart-bg, .randomize-bg
 {
     position: absolute;
     width: 90vw;
