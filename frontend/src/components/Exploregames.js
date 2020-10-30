@@ -9,6 +9,7 @@ const Exploregames = (props) =>
         <h1>Explore and Find New Games to Play Here</h1>
         {/* need api call to access all games and display games here with button to add them */}
         {/* check if gaame is in gamesPlayed list and if it is, then use remove button instead of add button */}
+        <h3><Link to="/game/gomoku">Gomoku</Link></h3>
     </div>) : <h4>Loading...</h4>
 
     const errorDiv = () => 
