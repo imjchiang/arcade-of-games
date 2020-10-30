@@ -14,6 +14,7 @@ const GameConfirmQuit = (props) =>
         let statusQ = props.quit;
         props.setStart(!statusS);
         props.setQuit(!statusQ);
+        props.setRandomize(null);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 
