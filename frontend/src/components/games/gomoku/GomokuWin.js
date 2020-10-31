@@ -95,14 +95,14 @@ export function fiveInRowDiagLtoR(grid)
             let incrementorB = 0;
             let incrementorW = 0;
 
-            while (grid[i][j] === "x" && grid[row][col] === "x" && incrementorB < 5)
+            while (incrementorB < 5 && grid[i][j] === "x" && grid[row][col] === "x")
             {
                 incrementorB++;
                 row--;
                 col--;
                 fiveInRowB++;
             }
-            while (grid[i][j] === "o" && grid[row][col] === "o" && incrementorW < 5)
+            while (incrementorW < 5 && grid[i][j] === "o" && grid[row][col] === "o")
             {
                 incrementorW++;
                 row--;
@@ -117,6 +117,46 @@ export function fiveInRowDiagLtoR(grid)
             if (incrementorW === 5)
             {
                 return("White Wins L2R Diagonally!")
+            }
+        }
+    }
+}
+
+export function fiveInRowDiagRTtoLB(grid)
+{
+    let fiveInRowB = 0;
+    let fiveInRowW = 0;
+    for (let i = 0; i < grid.length - 4; i++)
+    {
+        for (let j = grid[i].length; j > 3; j--)
+        {
+            let row = i;
+            let col = j;
+            let incrementorB = 0;
+            let incrementorW = 0;
+
+            while (incrementorB < 5 && grid[i][j] === "x" && grid[row][col] === "x")
+            {
+                incrementorB++;
+                row++;
+                col--;
+                fiveInRowB++;
+            }
+            while (incrementorW < 5 && grid[i][j] === "o" && grid[row][col] === "o")
+            {
+                incrementorW++;
+                row++;
+                col--;
+                fiveInRowW++;
+            }
+
+            if (incrementorB === 5)
+            {
+                return("Black Wins R2L Diagonally!")
+            }
+            if (incrementorW === 5)
+            {
+                return("White Wins R2L Diagonally!")
             }
         }
     }
