@@ -25,10 +25,16 @@ const Grid = (props) =>
             props.setTurn("b");
         }
 
-        console.log(fiveInRowHoriz(props.grid));
-        console.log(fiveInRowVert(props.grid));
-        console.log(fiveInRowDiagLtoR(props.grid));
-        console.log(fiveInRowDiagRTtoLB(props.grid));
+        if (fiveInRowHoriz(props.grid) === "bw" || fiveInRowVert(props.grid) === "bw" || fiveInRowDiagLtoR(props.grid) === "bw" || fiveInRowDiagRTtoLB(props.grid) === "bw")
+        {
+            props.setWinner("b");
+            props.setGameOver(true);
+        }
+        else if (fiveInRowHoriz(props.grid) === "ww" || fiveInRowVert(props.grid) === "ww" || fiveInRowDiagLtoR(props.grid) === "ww" || fiveInRowDiagRTtoLB(props.grid) === "ww")
+        {
+            props.setWinner("w");
+            props.setGameOver(true);
+        }
 
         props.setGrid(matrix);
         // console.log(matrix);

@@ -31,11 +31,11 @@ export function fiveInRowHoriz(grid)
         }
         if (fiveInRowB === 4)
         {
-            return("Black Wins Horizontally!");
+            return("bw");
         }
         if (fiveInRowW === 4)
         {
-            return("White Wins Horizontally!");
+            return("ww");
         }
     }
 }
@@ -72,11 +72,11 @@ export function fiveInRowVert(grid)
             }
             if (fiveInRowB === 4)
             {
-                return("Black Wins Vertically!");
+                return("bw");
             }
             if (fiveInRowW === 4)
             {
-                return("White Wins Vertically!");
+                return("ww");
             }
         }
     }
@@ -112,11 +112,11 @@ export function fiveInRowDiagLtoR(grid)
 
             if (incrementorB === 5)
             {
-                return("Black Wins L2R Diagonally!")
+                return("bw")
             }
             if (incrementorW === 5)
             {
-                return("White Wins L2R Diagonally!")
+                return("ww")
             }
         }
     }
@@ -152,11 +152,11 @@ export function fiveInRowDiagRTtoLB(grid)
 
             if (incrementorB === 5)
             {
-                return("Black Wins R2L Diagonally!")
+                return("bw")
             }
             if (incrementorW === 5)
             {
-                return("White Wins R2L Diagonally!")
+                return("ww")
             }
         }
     }
