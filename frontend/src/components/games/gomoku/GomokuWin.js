@@ -31,11 +31,11 @@ export function fiveInRowHoriz(grid)
         }
         if (fiveInRowB === 4)
         {
-            console.log("Black Wins Horizontally!");
+            return("Black Wins Horizontally!");
         }
         if (fiveInRowW === 4)
         {
-            console.log("White Wins Horizontally!");
+            return("White Wins Horizontally!");
         }
     }
 }
@@ -72,11 +72,51 @@ export function fiveInRowVert(grid)
             }
             if (fiveInRowB === 4)
             {
-                console.log("Black Wins Vertically!");
+                return("Black Wins Vertically!");
             }
             if (fiveInRowW === 4)
             {
-                console.log("White Wins Vertically!");
+                return("White Wins Vertically!");
+            }
+        }
+    }
+}
+
+export function fiveInRowDiagLtoR(grid)
+{
+    let fiveInRowB = 0;
+    let fiveInRowW = 0;
+    for (let i = grid.length - 1; i > 3; i--)
+    {
+        for (let j = grid[i].length; j > 3; j--)
+        {
+            let row = i;
+            let col = j;
+            let incrementorB = 0;
+            let incrementorW = 0;
+
+            while (grid[i][j] === "x" && grid[row][col] === "x" && incrementorB < 5)
+            {
+                incrementorB++;
+                row--;
+                col--;
+                fiveInRowB++;
+            }
+            while (grid[i][j] === "o" && grid[row][col] === "o" && incrementorW < 5)
+            {
+                incrementorW++;
+                row--;
+                col--;
+                fiveInRowW++;
+            }
+
+            if (incrementorB === 5)
+            {
+                return("Black Wins L2R Diagonally!")
+            }
+            if (incrementorW === 5)
+            {
+                return("White Wins L2R Diagonally!")
             }
         }
     }
