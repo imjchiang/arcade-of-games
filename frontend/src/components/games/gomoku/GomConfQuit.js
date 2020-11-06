@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameConfirmQuit = (props) => 
+const GomConfQuit = (props) => 
 {
     const handleClickC = () =>
     {
@@ -43,4 +43,4 @@ const GameConfirmQuit = (props) =>
     );
 }
 
-export default GameConfirmQuit;
+export default GomConfQuit;

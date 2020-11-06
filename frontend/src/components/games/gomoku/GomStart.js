@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const GameStart = (props) => 
+const GomStart = (props) => 
 {
     const handleClick = () =>
     {
@@ -22,4 +22,4 @@ const GameStart = (props) =>
     );
 }
 
-export default GameStart;
+export default GomStart;

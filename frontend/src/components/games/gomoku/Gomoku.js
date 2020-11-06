@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 
-import Grid from "./Grid";
-import GameStart from "./GameStart";
-import GameRandom from "./GameRandom";
-import GameQuitPanel from "./GameQuitPanel";
-import GameConfirmQuit from './GameConfirmQuit';
-import GameConfirmRestart from './GameConfirmRestart';
+import GomGrid from "./GomGrid";
+import GomStart from "./GomStart";
+import GomRand from "./GomRand";
+import GomQuitPan from "./GomQuitPan";
+import GomConfQuit from './GomConfQuit';
+import GomConfRes from './GomConfRes';
+import GomOver from './GomOver';
 
 import board from "./pictures/board.jpg";
 
@@ -25,15 +26,16 @@ const Gomoku = (props) =>
         <>
             <div className="gomoku">
                 <img id="gomoku-board" src={board} />
-                <Grid grid={grid} turn={turn} setWinner={setWinner} setGameOver={setGameOver} setGrid={setGrid} setTurn={setTurn} />
-                
-                <GameRandom start={start} quit={quit} randomize={randomize} setQuit={setQuit} setRandomize={setRandomize} setTurn={setTurn} />
+                <GomGrid grid={grid} turn={turn} setWinner={setWinner} setGameOver={setGameOver} setGrid={setGrid} setTurn={setTurn} />
+                <GomOver gameOver={gameOver} winner={winner} randomize={randomize} setTurn={setTurn} setRestart={setRestart} setGrid={setGrid} setStart={setStart} setQuit={setQuit} setRandomize={setRandomize} setWinner={setWinner} setGameOver={setGameOver} />
 
-                <GameConfirmQuit start={start} quit={quit} setStart={setStart} setQuit={setQuit} setGrid={setGrid} setRandomize={setRandomize} />
-                <GameConfirmRestart start={start} restart={restart} randomize={randomize} setStart={setStart} setRestart={setRestart} setGrid={setGrid} setTurn={setTurn} />
-                <GameStart start={start} setStart={setStart}/>
+                <GomRand start={start} quit={quit} randomize={randomize} setQuit={setQuit} setRandomize={setRandomize} setTurn={setTurn} />
+
+                <GomConfQuit start={start} quit={quit} setStart={setStart} setQuit={setQuit} setGrid={setGrid} setRandomize={setRandomize} />
+                <GomConfRes start={start} restart={restart} randomize={randomize} setStart={setStart} setRestart={setRestart} setGrid={setGrid} setTurn={setTurn} />
+                <GomStart start={start} setStart={setStart}/>
             </div>
-            <GameQuitPanel gameOver={gameOver} start={start} restart={restart} quit={quit} randomize={randomize} setStart={setStart} setRestart={setRestart} setQuit={setQuit} setGrid={setGrid} />
+            <GomQuitPan gameOver={gameOver} start={start} restart={restart} quit={quit} randomize={randomize} setStart={setStart} setRestart={setRestart} setQuit={setQuit} setGrid={setGrid} />
         </>
     );
 }

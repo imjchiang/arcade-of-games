@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameQuitPanel = (props) => 
+const GomQuitPan = (props) => 
 {
     const handleClickQ = () =>
     {
@@ -33,4 +33,4 @@ const GameQuitPanel = (props) =>
     );
 }
 
-export default GameQuitPanel;
+export default GomQuitPan;

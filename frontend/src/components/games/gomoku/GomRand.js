@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameRandom = (props) => 
+const GomRand = (props) => 
 {
     let random = Math.floor(Math.random()*2);
 
@@ -37,4 +37,4 @@ const GameRandom = (props) =>
     );
 }
 
-export default GameRandom;
+export default GomRand;

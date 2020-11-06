@@ -3,9 +3,9 @@ import GomokuBlank from "./pictures/gomoku-blank.png";
 import GomokuBlack from "./pictures/gomoku-black.png";
 import GomokuWhite from "./pictures/gomoku-white.png";
 
-import GomokuWin, { fiveInRowHoriz, fiveInRowVert, fiveInRowDiagLtoR, fiveInRowDiagRTtoLB } from "./GomokuWin";
+import GomWin, { fiveInRowHoriz, fiveInRowVert, fiveInRowDiagLtoR, fiveInRowDiagRTtoLB } from "./GomWin";
 
-const Grid = (props) => 
+const GomGrid = (props) => 
 {
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -29,11 +29,13 @@ const Grid = (props) =>
         {
             props.setWinner("b");
             props.setGameOver(true);
+            console.log("GG");
         }
         else if (fiveInRowHoriz(props.grid) === "ww" || fiveInRowVert(props.grid) === "ww" || fiveInRowDiagLtoR(props.grid) === "ww" || fiveInRowDiagRTtoLB(props.grid) === "ww")
         {
             props.setWinner("w");
             props.setGameOver(true);
+            console.log("GG");
         }
 
         props.setGrid(matrix);
@@ -119,4 +121,4 @@ const Grid = (props) =>
     );
 }
 
-export default Grid;
+export default GomGrid;
