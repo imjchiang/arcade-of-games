@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------------------------------
 //                                              HORIZONTAL                                             
 // ----------------------------------------------------------------------------------------------------
-export function fourInRowHoriz(grid, piece)
+export function fourHoriz(grid, piece)
 {
     for (let i = 0; i < grid.length; i++)
     {
@@ -22,7 +22,7 @@ export function fourInRowHoriz(grid, piece)
     }
 }
 
-export function threeInRowHorizNONE(grid, piece)
+export function threeHorizNone(grid, piece)
 {
     for (let i = 0; i < grid.length; i++)
     {
@@ -41,7 +41,7 @@ export function threeInRowHorizNONE(grid, piece)
     }
 }
 
-export function threeInRowHorizONE(grid, piece)
+export function threeHorizOne(grid, piece)
 {
     for (let i = 0; i < grid.length; i++)
     {
@@ -65,7 +65,7 @@ export function threeInRowHorizONE(grid, piece)
 // ----------------------------------------------------------------------------------------------------
 //                                               VERTICAL                                              
 // ----------------------------------------------------------------------------------------------------
-export function fourInRowVert(grid, piece)
+export function fourVert(grid, piece)
 {
     for (let i = 0; i < grid.length - 4; i++)
     {
@@ -86,7 +86,7 @@ export function fourInRowVert(grid, piece)
     }
 }
 
-export function threeInRowVertNONE(grid, piece)
+export function threeVertNone(grid, piece)
 {
     for (let i = 0; i < grid.length - 4; i++)
     {
@@ -105,7 +105,7 @@ export function threeInRowVertNONE(grid, piece)
     }
 }
 
-export function threeInRowVertONE(grid, piece)
+export function threeVertOne(grid, piece)
 {
     for (let i = 0; i < grid.length - 3; i++)
     {
@@ -127,9 +127,9 @@ export function threeInRowVertONE(grid, piece)
 }
 
 // ----------------------------------------------------------------------------------------------------
-//                                          DIAGONAL (L to R)                                          
+//                                      DIAGONAL (L to R from TOP)                                     
 // ----------------------------------------------------------------------------------------------------
-export function fourInRowDiagLtoR(grid, piece)
+export function fourDiagFromTL(grid, piece)
 {
     for (let i = 0; i < grid.length - 4; i++)
     {
@@ -144,6 +144,25 @@ export function fourInRowDiagLtoR(grid, piece)
             if (grid[i][j] === piece && grid[i + 1][j + 1] === piece && 
                 grid[i + 2][j + 2] === piece && grid[i + 3][j + 3] === piece && grid[i + 4][j + 4] === undefined)
             {
+                return [i + 4, j + 4];
+            }
+        }
+    }
+}
+
+export function threeDiagNoneFromTL(grid, piece)
+{
+    for (let i = 0; i < grid.length - 4; i++)
+    {
+        for (let j = 0; j < grid[i].length - 4; j++)
+        {
+            if (grid[i][j] === undefined && grid[i + 1][j + 1] === piece && 
+                grid[i + 2][j + 2] === piece && grid[i + 3][j + 3] === piece && grid[i + 4][j + 4] === undefined)
+            {
+                if (Math.floor(Math.random()*2) === 0)
+                {
+                    return [i, j];
+                }
                 return [i + 4, j + 4];
             }
         }
