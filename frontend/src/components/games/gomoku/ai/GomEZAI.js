@@ -125,3 +125,27 @@ export function threeInRowVertONE(grid, piece)
         }
     }
 }
+
+// ----------------------------------------------------------------------------------------------------
+//                                          DIAGONAL (L to R)                                          
+// ----------------------------------------------------------------------------------------------------
+export function fourInRowDiagLtoR(grid, piece)
+{
+    for (let i = 0; i < grid.length - 4; i++)
+    {
+        for (let j = 0; j < grid[i].length - 4; j++)
+        {
+            if (grid[i][j] === undefined && grid[i + 1][j + 1] === piece && 
+                grid[i + 2][j + 2] === piece && grid[i + 3][j + 3] === piece && grid[i + 4][j + 4] === piece)
+            {
+                return [i, j];
+            }
+
+            if (grid[i][j] === piece && grid[i + 1][j + 1] === piece && 
+                grid[i + 2][j + 2] === piece && grid[i + 3][j + 3] === piece && grid[i + 4][j + 4] === undefined)
+            {
+                return [i + 4, j + 4];
+            }
+        }
+    }
+}
