@@ -1,37 +1,38 @@
 export function threeInRowHorizNONE(grid)
 {
-    let row = 0;
-    let col = 0;
-    let iterations = 0;
     for (let i = 0; i < grid.length; i++)
     {
         for (let j = 0; j < grid[i].length - 4; j++)
         {
-            row = i;
-            col = j;
-            while (iterations < 5)
+            if (grid[i][j] === undefined && grid[i][j + 1] === "w" && grid[i][j + 2] === "w" && 
+                grid[i][j + 3] === "w" && grid[i][j + 4] === undefined)
             {
-                if ((iterations === 0 || iterations === 4) && grid[i][j] === undefined)
+                if (Math.floor(Math.random()*2) === 0)
                 {
-                    iterations++;
+                    return [i, j];
                 }
-                else if (iterations > 0 && iterations < 4 && grid[i][j] === "w")
-                {
-                    iterations++;
-                }
-                else
-                {
-                    iterations = 100;
-                }
+                return [i, j + 4];
             }
-            
-            if (iterations === 5)
+        }
+    }
+}
+
+export function threeInRowHorizONE(grid)
+{
+    for (let i = 0; i < grid.length; i++)
+    {
+        for (let j = 0; j < grid[i].length - 3; j++)
+        {
+            if (grid[i][j] === undefined && grid[i][j + 1] === "w" && 
+                grid[i][j + 2] === "w" && grid[i][j + 3] === "w")
             {
-                return [row, col];
+                return [i, j];
             }
-            else
+
+            if (grid[i][j] === "w" && grid[i][j + 1] === "w" && 
+                grid[i][j + 2] === "w" && grid[i][j + 3] === undefined)
             {
-                iterations = 0;
+                return [i, j + 3]
             }
         }
     }
