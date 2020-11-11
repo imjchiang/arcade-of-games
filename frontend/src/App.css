@@ -107,7 +107,7 @@ button:hover
     opacity: 0.5;
 }
 
-.gomoku-start
+/* .gomoku-start
 {
     background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
@@ -116,7 +116,7 @@ button:hover
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .gomoku-quit-button
 {
@@ -125,9 +125,9 @@ button:hover
     justify-content: center;
 }
 
-.confirm-quit, .confirm-restart, .begin-randomized
+.confirm-quit, .confirm-restart, .begin-randomized, .gg, .gomoku-mode-select
 {
-    margin: 38vh 0 40vh 0;
+    margin: 37vh 0 40vh 0;
     position: absolute;
     display: block;
     text-align: center;
@@ -136,7 +136,7 @@ button:hover
     border-radius: 2vh;
 }
 
-.confirm-quit-bg, .confirm-restart-bg, .randomize-bg
+.confirm-quit-bg, .confirm-restart-bg, .randomize-bg, .gg-bg, .gomoku-mode-bg
 {
     position: absolute;
     width: 90vw;
