@@ -125,7 +125,7 @@ button:hover
     justify-content: center;
 }
 
-.confirm-quit, .confirm-restart, .begin-randomized, .gg, .gomoku-mode-select
+.confirm-quit, .confirm-restart, .begin-randomized, .gg, .gomoku-mode-select, .gomoku-piece-select
 {
     margin: 37vh 0 40vh 0;
     position: absolute;
@@ -136,10 +136,24 @@ button:hover
     border-radius: 2vh;
 }
 
-.confirm-quit-bg, .confirm-restart-bg, .randomize-bg, .gg-bg, .gomoku-mode-bg
+.confirm-quit-bg, .confirm-restart-bg, .randomize-bg, .gg-bg, .gomoku-mode-bg, .gomoku-piece-bg
 {
     position: absolute;
     width: 90vw;
     height: 95vh;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.gomoku-piece-button
+{
+    width: 10vh;
+    height: 10vh;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gomoku-piece-img
+{
+    width: 7vh;
 }
