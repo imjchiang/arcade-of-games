@@ -189,3 +189,67 @@ export function threeDiagOneFromTL(grid, piece)
         }
     }
 }
+
+// ----------------------------------------------------------------------------------------------------
+//                                      DIAGONAL (R to L from TOP)                                     
+// ----------------------------------------------------------------------------------------------------
+export function fourDiagFromTR(grid, piece)
+{
+    for (let i = 0; i < grid.length - 4; i++)
+    {
+        for (let j = grid[i].length - 1; j > 3; j--)
+        {
+            if (grid[i][j] === undefined && grid[i - 1][j - 1] === piece && 
+                grid[i - 2][j - 2] === piece && grid[i - 3][j - 3] === piece && grid[i - 4][j - 4] === piece)
+            {
+                return [i, j];
+            }
+
+            if (grid[i][j] === piece && grid[i - 1][j - 1] === piece && 
+                grid[i - 2][j - 2] === piece && grid[i - 3][j - 3] === piece && grid[i - 4][j - 4] === undefined)
+            {
+                return [i - 4, j - 4];
+            }
+        }
+    }
+}
+
+export function threeDiagNoneFromTR(grid, piece)
+{
+    for (let i = 0; i < grid.length - 4; i++)
+    {
+        for (let j = grid[i].length - 1; j > 3; j--)
+        {
+            if (grid[i][j] === undefined && grid[i - 1][j - 1] === piece && 
+                grid[i - 2][j - 2] === piece && grid[i - 3][j - 3] === piece && grid[i - 4][j - 4] === undefined)
+            {
+                if (Math.floor(Math.random()*2) === 0)
+                {
+                    return [i, j];
+                }
+                return [i - 4, j - 4];
+            }
+        }
+    }
+}
+
+export function threeDiagOneFromTR(grid, piece)
+{
+    for (let i = 0; i < grid.length - 3; i++)
+    {
+        for (let j = grid[i].length - 1; j > 2; j--)
+        {
+            if (grid[i][j] === undefined && grid[i - 1][j - 1] === piece && 
+                grid[i - 2][j - 2] === piece && grid[i - 3][j - 3] === piece)
+            {
+                return [i, j];
+            }
+
+            if (grid[i][j] === piece && grid[i - 1][j - 1] === piece && 
+                grid[i - 2][j - 2] === piece && grid[i - 3][j - 3] === undefined)
+            {
+                return [i - 3, j - 3];
+            }
+        }
+    }
+}
