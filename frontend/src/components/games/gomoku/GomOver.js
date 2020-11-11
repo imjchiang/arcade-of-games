@@ -18,6 +18,7 @@ const GomOver = (props) =>
         props.setStart(false);
         props.setQuit(false);
         props.setRandomize(null);
+        props.setMode(null);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 
