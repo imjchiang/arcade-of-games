@@ -4,14 +4,12 @@ const GomQuitPan = (props) =>
 {
     const handleClickQ = () =>
     {
-        let status = props.quit;
-        props.setQuit(!status);
+        props.setQuit(true);
     }
 
     const handleClickR = () =>
     {
-        let status = props.restart;
-        props.setRestart(!status);
+        props.setRestart(true);
     }
 
     const quitPanel = 

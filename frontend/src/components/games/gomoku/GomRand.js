@@ -21,13 +21,13 @@ const GomRand = (props) =>
     return (
         <>
             {
-                props.start && props.randomize === null
+                props.start && props.randomize === null && props.aiPiece !== null
                 ?
                 <>
                     <div className="randomize-bg"></div>
                     <div className="begin-randomized">
                         <h3>{random === 1 ? "Black" : "White"} Starts!{console.log(random)}</h3>
-                        <button onClick={handleClick}>BEGIN!</button>
+                        <button onClick={handleClick}>Begin</button>
                     </div>
                 </>
                 :

@@ -6,8 +6,8 @@ const GomOver = (props) =>
     {
         props.setWinner(null);
         props.setGameOver(false);
-        props.setTurn(props.randomize);
         props.setRestart(false);
+        props.setTurn(props.randomize);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 
@@ -15,10 +15,10 @@ const GomOver = (props) =>
     {
         props.setWinner(null);
         props.setGameOver(false);
+        props.setMode(null);
         props.setStart(false);
         props.setQuit(false);
         props.setRandomize(null);
-        props.setMode(null);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 

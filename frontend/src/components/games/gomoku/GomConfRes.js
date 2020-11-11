@@ -4,15 +4,13 @@ const GomConfRes = (props) =>
 {
     const handleClickC = () =>
     {
-        let status = props.restart;
-        props.setRestart(!status);
+        props.setRestart(false);
     }
 
     const handleRestart = () =>
     {
-        let statusR = props.restart;
         props.setTurn(props.randomize);
-        props.setRestart(!statusR);
+        props.setRestart(false);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
     }
 

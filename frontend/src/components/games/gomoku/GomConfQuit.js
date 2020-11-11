@@ -4,18 +4,17 @@ const GomConfQuit = (props) =>
 {
     const handleClickC = () =>
     {
-        let status = props.quit;
-        props.setQuit(!status);
+        props.setQuit(false);
     }
 
     const handleQuit = () =>
     {
-        let statusS = props.start;
-        let statusQ = props.quit;
-        props.setStart(!statusS);
-        props.setQuit(!statusQ);
-        props.setRandomize(null);
         props.setGrid(Array.from({length: 19},()=> Array.from({length: 19}, () => null)));
+        props.setMode(null);
+        props.setStart(false);
+        props.setQuit(false);
+        props.setRandomize(null);
+        props.setAIPiece(null);
     }
 
     const confirmQuit = 
