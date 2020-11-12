@@ -20,6 +20,7 @@ export function fourHoriz(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeHorizNone(grid, piece)
@@ -39,6 +40,7 @@ export function threeHorizNone(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeHorizOne(grid, piece)
@@ -60,6 +62,7 @@ export function threeHorizOne(grid, piece)
             }
         }
     }
+    return false;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -84,6 +87,7 @@ export function fourVert(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeVertNone(grid, piece)
@@ -103,6 +107,7 @@ export function threeVertNone(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeVertOne(grid, piece)
@@ -124,6 +129,7 @@ export function threeVertOne(grid, piece)
             }
         }
     }
+    return false;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -148,6 +154,7 @@ export function fourDiagFromTL(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeDiagNoneFromTL(grid, piece)
@@ -167,6 +174,7 @@ export function threeDiagNoneFromTL(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeDiagOneFromTL(grid, piece)
@@ -188,6 +196,7 @@ export function threeDiagOneFromTL(grid, piece)
             }
         }
     }
+    return false;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -212,6 +221,7 @@ export function fourDiagFromTR(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeDiagNoneFromTR(grid, piece)
@@ -231,6 +241,7 @@ export function threeDiagNoneFromTR(grid, piece)
             }
         }
     }
+    return false;
 }
 
 export function threeDiagOneFromTR(grid, piece)
@@ -252,4 +263,120 @@ export function threeDiagOneFromTR(grid, piece)
             }
         }
     }
+    return false;
+}
+
+// ----------------------------------------------------------------------------------------------------
+//                                             COMPLETE AI                                             
+// ----------------------------------------------------------------------------------------------------
+export function gomEZAI(grid, ai, player)
+{
+    let [row, col];
+
+    if (fourHoriz(grid, ai))
+    {
+        [row, col] = fourHoriz(grid, ai);
+    }
+    else if (fourVert(grid, ai))
+    {
+        [row, col] = fourVert(grid, ai);
+    }
+    else if (fourDiagFromTL(grid, ai))
+    {
+        [row, col] = fourDiagFromTL(grid, ai);
+    }
+    else if (fourDiagFromTR(grid, ai))
+    {
+        row, col] = fourDiagFromTR(grid, ai);
+    }
+    /////////////////////////////////////////////////////////////////
+    else if (fourHoriz(grid, player))
+    {
+        [row, col] = fourHoriz(grid, player);
+    }
+    else if (fourVert(grid, player))
+    {
+        [row, col] = fourVert(grid, player);
+    }
+    else if (fourDiagFromTL(grid, player))
+    {
+        [row, col] = fourDiagFromTL(grid, player);
+    }
+    else if (fourDiagFromTR(grid, player))
+    {
+        [row, col] = fourDiagFromTR(grid, player);
+    }
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    else if (threeHorizNone(grid, ai))
+    {
+        [row, col] = threeHorizNone(grid, ai);
+    }
+    else if (threeVertNone(grid, ai))
+    {
+        [row, col] = threeVertNone(grid, ai);
+    }
+    else if (threeDiagNoneFromTL(grid, ai))
+    {
+        [row, col] = threeDiagNoneFromTL(grid, ai);
+    }
+    else if (threeDiagNoneFromTR(grid, ai))
+    {
+        [row, col] = threeDiagNoneFromTR(grid, ai);
+    }
+    /////////////////////////////////////////////////////////////////
+    else if (threeHorizNone(grid, player))
+    {
+        [row, col] = threeHorizNone(grid, player);
+    }
+    else if (threeVertNone(grid, player))
+    {
+        [row, col] = threeVertNone(grid, player);
+    }
+    else if (threeDiagNoneFromTL(grid, player))
+    {
+        [row, col] = threeDiagNoneFromTL(grid, player);
+    }
+    else if (threeDiagNoneFromTR(grid, player))
+    {
+        [row, col] = threeDiagNoneFromTR(grid, player);
+    }
+    /////////////////////////////////////////////////////////////////    
+    /////////////////////////////////////////////////////////////////    
+    else if (threeHorizOne(grid, ai))
+    {
+        [row, col] = threeHorizOne(grid, ai);
+    }
+    else if (threeVertOne(grid, ai))
+    {
+        [row, col] = threeVertOne(grid, ai);
+    }
+    else if (threeDiagOneFromTL(grid, ai))
+    {
+        [row, col] = threeDiagOneFromTL(grid, ai);
+    }
+    else if (threeDiagOneFromTR(grid, ai))
+    {
+        [row, col] = threeDiagOneFromTR(grid, ai);
+    }
+    /////////////////////////////////////////////////////////////////
+    else if (threeHorizOne(grid, player))
+    {
+        [row, col] = threeHorizOne(grid, player);
+    }
+    else if (threeVertOne(grid, player))
+    {
+        [row, col] = threeVertOne(grid, player);
+    }
+    else if (threeDiagOneFromTL(grid, player))
+    {
+        [row, col] = threeDiagOneFromTL(grid, player);
+    }
+    else if (threeDiagOneFromTR(grid, player))
+    {
+        [row, col] = threeDiagOneFromTR(grid, player);
+    }
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    return [row, col];
 }
