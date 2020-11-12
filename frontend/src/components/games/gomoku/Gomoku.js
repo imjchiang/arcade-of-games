@@ -31,6 +31,7 @@ const Gomoku = (props) =>
                 <img id="gomoku-board" src={board} />
                 <GomGrid 
                     grid={grid} 
+                    mode={mode} 
                     aiPiece={aiPiece}
                     turn={turn} 
                     aiPiece={aiPiece} 
