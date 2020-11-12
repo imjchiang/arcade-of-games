@@ -65,6 +65,52 @@ export function threeHorizOne(grid, piece)
     return false;
 }
 
+export function allPossFiveHoriz(grid, piece)
+{
+    let fourIn = [];
+    let threeIn = [];
+    let twoIn = [];
+    let oneIn = [];
+    for (let i = 0; i < grid.length; i++)
+    {
+        for (let j = 0; j < grid[i].length - 4; j++)
+        {
+            if ((grid[i][j] === undefined || grid[i][j] === piece) && 
+                (grid[i][j + 1] === undefined || grid[i][j + 1] === piece) && 
+                (grid[i][j + 2] === undefined || grid[i][j + 2] === piece) && 
+                (grid[i][j + 3] === undefined || grid[i][j + 3] === piece) && 
+                (grid[i][j + 4] === undefined || grid[i][j + 4] === piece))
+            {
+                let newCoords = [];
+                for (let k = 0; k < 5; k++)
+                {
+                    if (grid[i][j + k] === undefined)
+                    {
+                        newCoords.push({row: i, col: j + k});
+                    }
+                }
+                if (newCoords.length === 4)
+                {
+                    fourIn.push();
+                }
+                else if (newCoords.length === 3)
+                {
+                    threeIn.push();
+                }
+                else if (newCoords.length === 2)
+                {
+                    twoIn.push();
+                }
+                else if (newCoords.length === 1)
+                {
+                    oneIn.push();
+                }
+            }
+        }
+    }
+    return [fourIn, threeIn, twoIn, oneIn];
+}
+
 // ----------------------------------------------------------------------------------------------------
 //                                               VERTICAL                                              
 // ----------------------------------------------------------------------------------------------------
@@ -271,7 +317,8 @@ export function threeDiagOneFromTR(grid, piece)
 // ----------------------------------------------------------------------------------------------------
 export function gomEZAI(grid, ai, player)
 {
-    let [row, col];
+    let row;
+    let col;
 
     if (fourHoriz(grid, ai))
     {
@@ -287,7 +334,7 @@ export function gomEZAI(grid, ai, player)
     }
     else if (fourDiagFromTR(grid, ai))
     {
-        row, col] = fourDiagFromTR(grid, ai);
+        [row, col] = fourDiagFromTR(grid, ai);
     }
     /////////////////////////////////////////////////////////////////
     else if (fourHoriz(grid, player))
@@ -378,5 +425,55 @@ export function gomEZAI(grid, ai, player)
     }
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
+    else
+    {
+        let [four, three, two, one] = allPossFiveHoriz(grid, ai);
+        let [pFour, pThree, pTwo, pOne] = allPossFiveHoriz(grid, player);
+        
+        if (four.length > 0)
+        {
+            let random = Math.floor(Math.random()*(four.length));
+            [row, col] = [four[random].row, four[random].col];
+        }
+        else if (pFour.length > 0)
+        {
+            let random = Math.floor(Math.random()*(pFour.length));
+            [row, col] = [pFour[random].row, pFour[random].col];
+        }
+        else if (four.length > 0)
+        {
+            let random = Math.floor(Math.random()*(three.length));
+            [row, col] = [three[random].row, three[random].col];
+        }
+        else if (pThree.length > 0)
+        {
+            let random = Math.floor(Math.random()*(pThree.length));
+            [row, col] = [pThree[random].row, pThree[random].col];
+        }
+        else if (two.length > 0)
+        {
+            let random = Math.floor(Math.random()*(two.length));
+            [row, col] = [two[random].row, two[random].col];
+        }
+        else if (pTwo.length > 0)
+        {
+            let random = Math.floor(Math.random()*(pTwo.length));
+            [row, col] = [pTwo[random].row, pTwo[random].col];
+        }
+        else if (one.length > 0)
+        {
+            let random = Math.floor(Math.random()*(one.length));
+            [row, col] = [one[random].row, one[random].col];
+        }
+        else if (pOne.length > 0)
+        {
+            let random = Math.floor(Math.random()*(pOne.length));
+            [row, col] = [pOne[random].row, pOne[random].col];
+        }
+        else
+        {
+            [row, col] = [9, 9];
+        }
+    }
     return [row, col];
 }
