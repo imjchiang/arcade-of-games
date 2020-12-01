@@ -5,6 +5,7 @@ import "./checkers.css";
 import LightSquare from "./pictures/LightSquare.png";
 import DarkSquare from "./pictures/DarkSquare.png";
 import DarkSquareLight from "./pictures/DarkSquareLight.png";
+import DarkSquareDark from "./pictures/DarkSquareDark.png";
 
 const Checkers = (props) => 
 {
@@ -19,10 +20,10 @@ const Checkers = (props) =>
 
     const lightSquare = <img className="checker-square" src={LightSquare} />;
     const darkSquare = <img className="checker-square" src={DarkSquare} />;
-    const darkSquareDark = <img className="checker-square" src={DarkSquare} />;
     const darkSquareLight = <img className="checker-square" src={DarkSquareLight} />;
-    const darkSquareDarkClick = <img className="checker-square" src={DarkSquare} />;
+    const darkSquareDark = <img className="checker-square" src={DarkSquareDark} />;
     const darkSquareLightClick = <img className="checker-square" src={DarkSquareLight} />;
+    const darkSquareDarkClick = <img className="checker-square" src={DarkSquareDark} />;
 
     let checkersBoard;
 
