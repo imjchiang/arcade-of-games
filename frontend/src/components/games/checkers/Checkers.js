@@ -66,6 +66,14 @@ const Checkers = (props) =>
                             {
                                 return darkSquareDark;
                             }
+                            if (col === 100)
+                            {
+                                return darkSquareLightClick;
+                            }
+                            if (col === 111)
+                            {
+                                return darkSquareDarkClick;
+                            }
                         })
                     }
                 </span>
