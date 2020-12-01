@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
+import LightSquare from "./pictures/LightSquare.png"
+import DarkSquare from "./pictures/DarkSquare.png"
+import DarkSquareLight from "./pictures/DarkSquareLight.png"
+
 const Checkers = (props) => 
 {
     const [board, setBoard] = useState([[null, 0, null, 0, null, 0, null, 0], 
@@ -12,43 +16,33 @@ const Checkers = (props) =>
                                       [1, null, 1, null, 1, null, 1, null]]);
 
     const lightSquare = 
-        <div>
-            <img src={}/>
-        </div>
+        <img src={LightSquare} />
 
     const darkSquare =
-        <div>
-            <img src={}/>
-        </div>
+        <img src={DarkSquare} />
 
     const darkSquareDark =
-        <div>
-            <img src={}/>
-        </div>
+        <img src={DarkSquare} />
     
     const darkSquareLight =
-        <div>
-            <img src={}/>
-        </div>
+        <img src={DarkSquareLight} />
     
     const darkSquareDarkClick =
-        <div>
-            <img src={}/>
-        </div>
+        <img src={DarkSquare} />
     
     const darkSquareLightClick =
-        <div>
-            <img src={}/>
-        </div>
+        <img src={DarkSquareLight} />
 
-    useEffect(() =>
-    {
-        board.forEach((row, idx) =>
+    let checkersBoard;
+
+    // useEffect(() =>
+    // {
+        checkersBoard = board.map((row, idx) =>
         {
             return(
-                <span>
+                <span className="checkers-row">
                     {
-                        row.forEach((col, idy) =>
+                        row.map((col, idy) =>
                         {
                             if (col === null)
                             {
@@ -79,11 +73,12 @@ const Checkers = (props) =>
                 </span>
             );
         });
-    }, []);
+    // }, []);
 
     return (
         <>
             <h1>Checkers</h1>
+            {checkersBoard}
         </>
     );
 }
