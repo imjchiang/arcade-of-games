@@ -41,6 +41,38 @@ const Checkers = (props) =>
             <img src={}/>
         </div>
 
+    useEffect(() =>
+    {
+        board.forEach((row, idx) =>
+        {
+            return(
+                <span>
+                    {
+                        row.forEach((col, idy) =>
+                        {
+                            if (col === null)
+                            {
+                                return lightSquare;
+                            }
+                            if (col === -1)
+                            {
+                                return darkSquare;
+                            }
+                            if (col === 0)
+                            {
+                                return darkSquareLight;
+                            }
+                            if (col === 1)
+                            {
+                                return darkSquareDark;
+                            }
+                        })
+                    }
+                </span>
+            );
+        });
+    }, []);
+
     return (
         <>
             <h1>Checkers</h1>
