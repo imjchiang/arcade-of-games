@@ -7,3 +7,10 @@
 {
     width: 11vh;
 }
+
+.checkers-board
+{
+    width: fit-content;
+    border: 1vh solid black;
+    background-color: black;
+}

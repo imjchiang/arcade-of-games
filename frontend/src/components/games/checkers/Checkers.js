@@ -69,7 +69,7 @@ const Checkers = (props) =>
     return (
         <>
             <h1>Checkers</h1>
-            {checkersBoard}
+            <div className="checkers-board">{checkersBoard}</div>
         </>
     );
 }
