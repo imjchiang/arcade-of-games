@@ -11,6 +11,36 @@ const Checkers = (props) =>
                                       [null, 1, null, 1, null, 1, null, 1], 
                                       [1, null, 1, null, 1, null, 1, null]]);
 
+    const lightSquare = 
+        <div>
+            <img src={}/>
+        </div>
+
+    const darkSquare =
+        <div>
+            <img src={}/>
+        </div>
+
+    const darkSquareDark =
+        <div>
+            <img src={}/>
+        </div>
+    
+    const darkSquareLight =
+        <div>
+            <img src={}/>
+        </div>
+    
+    const darkSquareDarkClick =
+        <div>
+            <img src={}/>
+        </div>
+    
+    const darkSquareLightClick =
+        <div>
+            <img src={}/>
+        </div>
+
     return (
         <>
             <h1>Checkers</h1>
