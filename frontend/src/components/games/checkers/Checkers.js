@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 
-import LightSquare from "./pictures/LightSquare.png"
-import DarkSquare from "./pictures/DarkSquare.png"
-import DarkSquareLight from "./pictures/DarkSquareLight.png"
+import "./checkers.css";
+
+import LightSquare from "./pictures/LightSquare.png";
+import DarkSquare from "./pictures/DarkSquare.png";
+import DarkSquareLight from "./pictures/DarkSquareLight.png";
 
 const Checkers = (props) => 
 {
@@ -15,23 +17,12 @@ const Checkers = (props) =>
                                       [null, 1, null, 1, null, 1, null, 1], 
                                       [1, null, 1, null, 1, null, 1, null]]);
 
-    const lightSquare = 
-        <img src={LightSquare} />
-
-    const darkSquare =
-        <img src={DarkSquare} />
-
-    const darkSquareDark =
-        <img src={DarkSquare} />
-    
-    const darkSquareLight =
-        <img src={DarkSquareLight} />
-    
-    const darkSquareDarkClick =
-        <img src={DarkSquare} />
-    
-    const darkSquareLightClick =
-        <img src={DarkSquareLight} />
+    const lightSquare = <img className="checker-square" src={LightSquare} />;
+    const darkSquare = <img className="checker-square" src={DarkSquare} />;
+    const darkSquareDark = <img className="checker-square" src={DarkSquare} />;
+    const darkSquareLight = <img className="checker-square" src={DarkSquareLight} />;
+    const darkSquareDarkClick = <img className="checker-square" src={DarkSquare} />;
+    const darkSquareLightClick = <img className="checker-square" src={DarkSquareLight} />;
 
     let checkersBoard;
 

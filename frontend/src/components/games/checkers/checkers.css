@@ -1,0 +1,9 @@
+.checkers-row
+{
+    display: flex;
+}
+
+.checker-square
+{
+    width: 11vh;
+}
