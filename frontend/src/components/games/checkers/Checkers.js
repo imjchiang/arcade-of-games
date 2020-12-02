@@ -18,54 +18,72 @@ const Checkers = (props) =>
                                       [null, 1, null, 1, null, 1, null, 1], 
                                       [1, null, 1, null, 1, null, 1, null]]);
 
-    const lightSquare = <img className="checker-square" src={LightSquare} />;
-    const darkSquare = <img className="checker-square" src={DarkSquare} />;
-    const darkSquareLight = <img className="checker-square" src={DarkSquareLight} />;
-    const darkSquareDark = <img className="checker-square" src={DarkSquareDark} />;
-    const darkSquareLightClick = <img className="checker-square" src={DarkSquareLight} />;
-    const darkSquareDarkClick = <img className="checker-square" src={DarkSquareDark} />;
-
-    let checkersBoard;
-
-    // useEffect(() =>
-    // {
-        checkersBoard = board.map((row, idx) =>
+    const handleBoardClick = (x, y, piece) =>
+    {
+        let theBoard = board;
+        theBoard.forEach((row, idx) =>
         {
-            return(
-                <span className="checkers-row">
-                    {
-                        row.map((col, idy) =>
-                        {
-                            if (col === null)
-                            {
-                                return lightSquare;
-                            }
-                            if (col === -1)
-                            {
-                                return darkSquare;
-                            }
-                            if (col === 0)
-                            {
-                                return darkSquareLight;
-                            }
-                            if (col === 1)
-                            {
-                                return darkSquareDark;
-                            }
-                            if (col === 100)
-                            {
-                                return darkSquareLightClick;
-                            }
-                            if (col === 111)
-                            {
-                                return darkSquareDarkClick;
-                            }
-                        })
-                    }
-                </span>
-            );
+            row.forEach((col, idy) =>
+            {
+                if (col === 100)
+                {
+                    col = 0;
+                }
+                if (col === 111)
+                {
+                    col = 1;
+                }
+            });
         });
-    // }, []);
+
+        if (piece === "light")
+        {
+            theBoard[x][y] = 100;
+        }
+        else if (piece === "dark")
+        {
+            theBoard[x][y] = 111;
+        }
+
+        setBoard(theBoard);
+    }
+
+    let checkersBoard = board.map((row, idx) =>
+    {
+        return(
+            <span className="checkers-row">
+                {
+                    row.map((col, idy) =>
+                    {
+                        if (col === null)
+                        {
+                            return <img className="checker-square" src={LightSquare} />;
+                        }
+                        if (col === -1)
+                        {
+                            return <img className="checker-square" src={DarkSquare} />;
+                        }
+                        if (col === 0)
+                        {
+                            return <img className="checker-square" onClick={handleBoardClick(idx, idy, "light")} src={DarkSquareLight} />;
+                        }
+                        if (col === 1)
+                        {
+                            return <img className="checker-square" onClick={handleBoardClick(idx, idy, "dark")} src={DarkSquareDark} />;
+                        }
+                        if (col === 100)
+                        {
+                            return <img className="checker-square" src={DarkSquareLight} />;
+                        }
+                        if (col === 111)
+                        {
+                            return <img className="checker-square" src={DarkSquareDark} />;
+                        }
+                    })
+                }
+            </span>
+        );
+    });
 
     return (
         <>
