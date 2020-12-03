@@ -20,22 +20,22 @@ const ChkrsGrid = (props) =>
         {
             for (let j = 0; j < theBoard[i].length; j++)
             {
-                if (theBoard[i][j] === 100 && props.turn === piece)
+                if (theBoard[i][j] === 100)
                 {
                     theBoard[i][j] = 0;
                 }
-                else if (theBoard[i][j] === 111 && props.turn === piece)
+                else if (theBoard[i][j] === 111)
                 {
                     theBoard[i][j] = 1;
                 }
             }
         }
 
-        if (piece === "light")
+        if (piece === "light" && props.turn === piece)
         {
             theBoard[x][y] = 100;
         }
-        else if (piece === "dark")
+        else if (piece === "dark" && props.turn === piece)
         {
             theBoard[x][y] = 111;
         }
