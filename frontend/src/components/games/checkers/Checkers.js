@@ -6,6 +6,7 @@ import "./checkers.css";
 
 const Checkers = (props) => 
 {
+    const [pieceSelected, setPieceSelected] = useState(undefined);
     const [board, setBoard] = useState([[null, 0, null, 0, null, 0, null, 0], 
                                       [0, null, 0, null, 0, null, 0, null], 
                                       [null, 0, null, 0, null, 0, null, 0], 
@@ -18,7 +19,11 @@ const Checkers = (props) =>
     return (
         <>
             <h1>Checkers</h1>
-            <ChkrsGrid board={board} setBoard={setBoard} />
+            <ChkrsGrid 
+                board={board} 
+                pieceSelected={pieceSelected}
+                setBoard={setBoard}
+                setPieceSelected={setPieceSelected} />
         </>
     );
 }

@@ -4,8 +4,8 @@ import LightSquare from "./pictures/LightSquare.png";
 import DarkSquare from "./pictures/DarkSquare.png";
 import DarkSquareLight from "./pictures/DarkSquareLight.png";
 import DarkSquareDark from "./pictures/DarkSquareDark.png";
-import DarkSquareLightClick from "./pictures/DarkSquareLight.png";
-import DarkSquareDarkClick from "./pictures/DarkSquareDarkClick2.png";
+import DarkSquareLightClick from "./pictures/DarkSquareLightClick.png";
+import DarkSquareDarkClick from "./pictures/DarkSquareDarkClick.png";
 
 const ChkrsGrid = (props) => 
 {
@@ -40,8 +40,14 @@ const ChkrsGrid = (props) =>
             theBoard[x][y] = 111;
         }
 
+        props.setPieceSelected(piece);
         props.setBoard(theBoard);
         forceUpdate();
+    }
+
+    const handleVacantClick = (x, y) =>
+    {
+        console.log(props.pieceSelected);
     }
 
     return (
@@ -60,7 +66,7 @@ const ChkrsGrid = (props) =>
                                     }
                                     if (col === -1)
                                     {
-                                        return <img className="checker-square" src={DarkSquare} />;
+                                        return <img className="checker-square" onClick={() => handleVacantClick(idx, idy)} src={DarkSquare} />;
                                     }
                                     if (col === 0)
                                     {
