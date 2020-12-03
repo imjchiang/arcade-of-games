@@ -34,11 +34,13 @@ const ChkrsGrid = (props) =>
         if (piece === "light" && props.turn === piece)
         {
             theBoard[x][y] = 100;
+            props.setSelectedCoords([x, y]);
             props.setPieceSelected(piece);
         }
         else if (piece === "dark" && props.turn === piece)
         {
             theBoard[x][y] = 111;
+            props.setSelectedCoords([x, y]);
             props.setPieceSelected(piece);
         }
 
@@ -48,17 +50,22 @@ const ChkrsGrid = (props) =>
 
     const handleVacantClick = (x, y) =>
     {
-        console.log(props.pieceSelected);
+        // console.log(props.pieceSelected);
+        // console.log(props.selectedCoords);
+        let theBoard = props.board;
+
         if (props.turn === "dark" && props.pieceSelected !== undefined)
         {
+            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
+            theBoard[x][y] = 1;
             props.setTurn("light");
         }
         else if (props.turn === "light" && props.pieceSelected !== undefined)
         {
+            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
+            theBoard[x][y] = 0;
             props.setTurn("dark");
         }
-
-        let theBoard = props.board;
 
         for (let i = 0; i < theBoard.length; i++)
         {
@@ -77,6 +84,8 @@ const ChkrsGrid = (props) =>
 
         props.setBoard(theBoard);
         props.setPieceSelected(undefined);
+        props.setSelectedCoords(undefined);
+        forceUpdate();
     }
 
     return (

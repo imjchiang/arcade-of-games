@@ -7,6 +7,7 @@ import "./checkers.css";
 const Checkers = (props) => 
 {
     const [pieceSelected, setPieceSelected] = useState(undefined);
+    const [selectedCoords, setSelectedCoords] = useState(undefined);
     const [turn, setTurn] = useState("dark");
     const [board, setBoard] = useState([[null, 0, null, 0, null, 0, null, 0], 
                                       [0, null, 0, null, 0, null, 0, null], 
@@ -24,9 +25,11 @@ const Checkers = (props) =>
                 board={board} 
                 turn={turn} 
                 pieceSelected={pieceSelected}
+                selectedCoords={selectedCoords}
                 setBoard={setBoard}
                 setTurn={setTurn}
-                setPieceSelected={setPieceSelected} />
+                setPieceSelected={setPieceSelected}
+                setSelectedCoords={setSelectedCoords} />
         </>
     );
 }
