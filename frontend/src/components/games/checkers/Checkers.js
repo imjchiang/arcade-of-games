@@ -7,6 +7,7 @@ import "./checkers.css";
 const Checkers = (props) => 
 {
     const [pieceSelected, setPieceSelected] = useState(undefined);
+    const [turn, setTurn] = useState("dark");
     const [board, setBoard] = useState([[null, 0, null, 0, null, 0, null, 0], 
                                       [0, null, 0, null, 0, null, 0, null], 
                                       [null, 0, null, 0, null, 0, null, 0], 
@@ -21,8 +22,10 @@ const Checkers = (props) =>
             <h1>Checkers</h1>
             <ChkrsGrid 
                 board={board} 
+                turn={turn} 
                 pieceSelected={pieceSelected}
                 setBoard={setBoard}
+                setTurn={setTurn}
                 setPieceSelected={setPieceSelected} />
         </>
     );
