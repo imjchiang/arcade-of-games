@@ -1,15 +1,23 @@
-export function validMoveDark(board, selectedX, selectedY, moveToX, moveToY)
+export function validMoveDark(board, selectedX, selectedY, moveToX, moveToY, piece)
 {
     if (board[moveToX][moveToY] === -1 && selectedX - 1 === moveToX && (moveToY === selectedY + 1 || moveToY === selectedY - 1))
+    {
+        return true;
+    }
+    if (piece === "darkK" && board[moveToX][moveToY] === -1 && selectedX + 1 === moveToX && (moveToY === selectedY + 1 || moveToY === selectedY - 1))
     {
         return true;
     }
     return false;
 }
 
-export function validMoveLight(board, selectedX, selectedY, moveToX, moveToY)
+export function validMoveLight(board, selectedX, selectedY, moveToX, moveToY, piece)
 {
     if (board[moveToX][moveToY] === -1 && selectedX + 1 === moveToX && (moveToY === selectedY + 1 || moveToY === selectedY - 1))
+    {
+        return true;
+    }
+    if (piece === "lightK" && board[moveToX][moveToY] === -1 && selectedX - 1 === moveToX && (moveToY === selectedY + 1 || moveToY === selectedY - 1))
     {
         return true;
     }

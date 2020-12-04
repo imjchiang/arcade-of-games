@@ -18,10 +18,11 @@ const ChkrsGrid = (props) =>
     const [, updateState] = useState();
     const forceUpdate = useCallback(() => updateState({}), []);
 
-    const handleBoardClick = (x, y, piece) =>
+    const handleBoardClick = (x, y, piece, king) =>
     {
         let theBoard = props.board;
 
+        // unselect all pieces that are selected
         for (let i = 0; i < theBoard.length; i++)
         {
             for (let j = 0; j < theBoard[i].length; j++)
@@ -34,20 +35,40 @@ const ChkrsGrid = (props) =>
                 {
                     theBoard[i][j] = 1;
                 }
+                else if (theBoard[i][j] === 8888)
+                {
+                    theBoard[i][j] = 1000;
+                }
+                else if (theBoard[i][j] === 9999)
+                {
+                    theBoard[i][j] = 1111;
+                }
             }
         }
 
-        if (piece === "light" && props.turn === piece)
+        if (piece === "light" && props.turn === piece && !king)
         {
             theBoard[x][y] = 100;
             props.setSelectedCoords([x, y]);
             props.setPieceSelected(piece);
         }
-        else if (piece === "dark" && props.turn === piece)
+        else if (piece === "dark" && props.turn === piece && !king)
         {
             theBoard[x][y] = 111;
             props.setSelectedCoords([x, y]);
             props.setPieceSelected(piece);
+        }
+        else if (piece === "light" && props.turn === piece && king)
+        {
+            theBoard[x][y] = 8888;
+            props.setSelectedCoords([x, y]);
+            props.setPieceSelected("lightK");
+        }
+        else if (piece === "dark" && props.turn === piece && king)
+        {
+            theBoard[x][y] = 9999;
+            props.setSelectedCoords([x, y]);
+            props.setPieceSelected("darkK");
         }
 
         props.setBoard(theBoard);
@@ -76,7 +97,7 @@ const ChkrsGrid = (props) =>
                     }
                     theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
                     // check if need to create dark king or regular dark
-                    if (x === 0)
+                    if (x === 0 || props.pieceSelected === "darkK")
                     {
                         theBoard[x][y] = 1111;
                     }
@@ -86,7 +107,7 @@ const ChkrsGrid = (props) =>
                     }
                     props.setTurn("light");
                 }
-                if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
+                if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
                     if (darkCanEat(theBoard))
                     {
@@ -96,7 +117,7 @@ const ChkrsGrid = (props) =>
                     {
                         theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
                         // check if need to create dark king or regular dark
-                        if (x === 0)
+                        if (x === 0 || props.pieceSelected === "darkK")
                         {
                             theBoard[x][y] = 1111;
                         }
@@ -125,7 +146,7 @@ const ChkrsGrid = (props) =>
 
                     theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
                     // check if need to create light king or regular light
-                    if (x === theBoard.length - 1)
+                    if (x === theBoard.length - 1 || props.pieceSelected === "lightK")
                     {
                         theBoard[x][y] = 1000;
                     }
@@ -135,7 +156,7 @@ const ChkrsGrid = (props) =>
                     }
                     props.setTurn("dark");
                 }
-                else if (validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
+                else if (validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
                     if (lightCanEat(theBoard))
                     {
@@ -145,7 +166,7 @@ const ChkrsGrid = (props) =>
                     {
                         theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
                         // check if need to create light king or regular light
-                        if (x === theBoard.length - 1)
+                        if (x === theBoard.length - 1 || props.pieceSelected === "lightK")
                         {
                             theBoard[x][y] = 1000;
                         }
@@ -171,6 +192,14 @@ const ChkrsGrid = (props) =>
                 else if (theBoard[i][j] === 111)
                 {
                     theBoard[i][j] = 1;
+                }
+                else if (theBoard[i][j] === 8888)
+                {
+                    theBoard[i][j] = 1000;
+                }
+                else if (theBoard[i][j] === 9999)
+                {
+                    theBoard[i][j] = 1111;
                 }
             }
         }
@@ -201,11 +230,11 @@ const ChkrsGrid = (props) =>
                                     }
                                     if (col === 0)
                                     {
-                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "light")} src={DarkSquareLight} />;
+                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "light", false)} src={DarkSquareLight} />;
                                     }
                                     if (col === 1)
                                     {
-                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "dark")} src={DarkSquareDark} />;
+                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "dark", false)} src={DarkSquareDark} />;
                                     }
                                     if (col === 100)
                                     {
@@ -217,19 +246,19 @@ const ChkrsGrid = (props) =>
                                     }
                                     if (col === 1000)
                                     {
-                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "light")} src={LightKing} />;
+                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "light", true)} src={LightKing} />;
                                     }
                                     if (col === 1111)
                                     {
-                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "dark")} src={DarkKing} />;
+                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "dark", true)} src={DarkKing} />;
                                     }
                                     if (col === 8888)
                                     {
-                                        return <img className="checker-square" src={LightKing} />;
+                                        return <img className="checker-square" src={LightKingClick} />;
                                     }
                                     if (col === 9999)
                                     {
-                                        return <img className="checker-square" src={DarkKing} />;
+                                        return <img className="checker-square" src={DarkKingClick} />;
                                     }
                                 })
                             }
