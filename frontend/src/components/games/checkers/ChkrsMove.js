@@ -54,7 +54,6 @@ export function validCaptureLight(board, selectedX, selectedY, moveToX, moveToY)
 
 export function darkCanEat(board)
 {
-    let coords = [];
     // loop through entire board
     for (let i = 0; i < board.length; i++)
     {
@@ -63,24 +62,23 @@ export function darkCanEat(board)
             // if the piece is dark
             if (board[i][j] === 1 || board[i][j] === 111)
             {
-                // if the neighboring diag piece exists and is light
-                if (board[i - 1][j - 1] && board[i - 1][j - 1] === 0)
+                // if the neighboring diag is light and next diag space is vacant
+                if (board[i - 1][j - 1] === 0 && board[i - 2][j - 2] === -1)
                 {
-                    coords.push({x: i - 1, y: j - 1});
+                    return true;
                 }
-                if (board[i - 1][j + 1] && board[i - 1][j + 1] === 0)
+                if (board[i - 1][j + 1] === 0 && board[i - 2][j + 2] === -1)
                 {
-                    coords.push({x: i - 1, y: j - 1});
+                    return true;
                 }
             }
         }
     }
-    return coords;
+    return false;
 }
 
 export function lightCanEat(board)
 {
-    let coords = [];
     // loop through entire board
     for (let i = 0; i < board.length; i++)
     {
@@ -89,17 +87,17 @@ export function lightCanEat(board)
             // if the piece is light
             if (board[i][j] === 0 || board[i][j] === 100)
             {
-                // if the neighboring diag piece exists and is dark
-                if (board[i + 1][j - 1] && board[i + 1][j - 1] === 0)
+                // if the neighboring diag is dark and next diag space is vacant
+                if (board[i + 1][j - 1] === 1 && board[i + 2][j - 2] === -1)
                 {
-                    coords.push({x: i + 1, y: j - 1});
+                    return true;
                 }
-                if (board[i + 1][j + 1] && board[i + 1][j + 1] === 0)
+                if (board[i + 1][j + 1] === 1 && board[i + 2][j + 2] === -1)
                 {
-                    coords.push({x: i + 1, y: j - 1});
+                    return true;
                 }
             }
         }
     }
-    return coords;
+    return false;
 }

@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from 'react';
 
-import {validMoveDark, validMoveLight} from "./ChkrsMove";
+import {validMoveDark, validMoveLight, validCaptureDark, validCaptureLight, darkCanEat, lightCanEat} from "./ChkrsMove";
 
 import LightSquare from "./pictures/LightSquare.png";
 import DarkSquare from "./pictures/DarkSquare.png";
@@ -56,17 +56,33 @@ const ChkrsGrid = (props) =>
         // console.log(props.selectedCoords);
         let theBoard = props.board;
 
-        if (props.turn === "dark" && props.pieceSelected !== undefined && validMoveDark(props.board, props.selectedCoords[0], props.selectedCoords[1], x, y))
+        if (props.turn === "dark" && props.pieceSelected !== undefined && validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
         {
-            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
-            theBoard[x][y] = 1;
-            props.setTurn("light");
+            if (darkCanEat(theBoard))
+            {
+                console.log("POSITION IS INVALID. MUST CAPTURE PIECE WHEN CAPTURE IS POSSIBLE.");
+            }
+            else
+            {
+                console.log(darkCanEat(theBoard));
+                theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
+                theBoard[x][y] = 1;
+                props.setTurn("light");
+            }
         }
-        else if (props.turn === "light" && props.pieceSelected !== undefined && validMoveLight(props.board, props.selectedCoords[0], props.selectedCoords[1], x, y))
+        else if (props.turn === "light" && props.pieceSelected !== undefined && validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
         {
-            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
-            theBoard[x][y] = 0;
-            props.setTurn("dark");
+            if (lightCanEat(theBoard))
+            {
+                console.log("POSITION IS INVALID. MUST CAPTURE PIECE WHEN CAPTURE IS POSSIBLE.");
+            }
+            else
+            {
+                console.log(lightCanEat(theBoard));
+                theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
+                theBoard[x][y] = 0;
+                props.setTurn("dark");
+            }
         }
 
         for (let i = 0; i < theBoard.length; i++)
