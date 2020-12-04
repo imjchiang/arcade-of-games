@@ -32,8 +32,8 @@ export function validCaptureLight(board, selectedX, selectedY, moveToX, moveToY)
 {
     // check vacant position, white in middle, anchor point
     if (board[moveToX][moveToY] === -1 && 
-        ((moveToX === selectedX + 2 && moveToY === selectedY - 2 && board[selectedX + 1][selectedY - 1] === 0) || 
-        (moveToX === selectedX + 2 && moveToY === selectedY + 2 && board[selectedX + 1][selectedY + 1] === 0)))
+        ((moveToX === selectedX + 2 && moveToY === selectedY - 2 && board[selectedX + 1][selectedY - 1] === 1) || 
+        (moveToX === selectedX + 2 && moveToY === selectedY + 2 && board[selectedX + 1][selectedY + 1] === 1)))
     {
         return true;
     }
