@@ -18,36 +18,24 @@ export function validMoveLight(board, selectedX, selectedY, moveToX, moveToY)
 
 export function validCaptureDark(board, selectedX, selectedY, moveToX, moveToY)
 {
-    // get the possible capture coords
-    let coords = darkCanEat(board);
-    // cycle through all possibilities
-    for (let i = 0; i < coords.length; i++)
+    // check vacant position, white in middle, anchor point
+    if (board[moveToX][moveToY] === -1 && 
+        ((moveToX === selectedX - 2 && moveToY === selectedY - 2 && board[selectedX - 1][selectedY - 1] === 0) || 
+        (moveToX === selectedX - 2 && moveToY === selectedY + 2 && board[selectedX - 1][selectedY + 1] === 0)))
     {
-        // if space is available, piece selected is the right one, and it is a capture position
-        if (board[moveToX][moveToY] === -1 && 
-            selectedX + 2 === moveToX && (moveToY === selectedY + 2 || moveToY === selectedY - 2) && 
-            moveToX === coords[i].x && moveToY === coords[i].y)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
 export function validCaptureLight(board, selectedX, selectedY, moveToX, moveToY)
 {
-    // get the possible capture coords
-    let coords = lightCanEat(board);
-    // cycle through all possibilities
-    for (let i = 0; i < coords.length; i++)
+    // check vacant position, white in middle, anchor point
+    if (board[moveToX][moveToY] === -1 && 
+        ((moveToX === selectedX + 2 && moveToY === selectedY - 2 && board[selectedX + 1][selectedY - 1] === 0) || 
+        (moveToX === selectedX + 2 && moveToY === selectedY + 2 && board[selectedX + 1][selectedY + 1] === 0)))
     {
-        // if space is available, piece selected is the right one, and it is a capture position
-        if (board[moveToX][moveToY] === -1 && 
-            selectedX - 2 === moveToX && (moveToY === selectedY + 2 || moveToY === selectedY - 2) && 
-            moveToX === coords[i].x && moveToY === coords[i].y)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
