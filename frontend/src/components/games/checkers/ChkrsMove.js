@@ -51,11 +51,13 @@ export function darkCanEat(board)
             if (board[i][j] === 1 || board[i][j] === 111)
             {
                 // if the neighboring diag is light and next diag space is vacant
-                if (board[i - 1][j - 1] === 0 && board[i - 2][j - 2] === -1)
+                if (board[i - 1][j - 1] !== undefined && board[i - 2][j - 2] === -1 !== undefined && 
+                    board[i - 1][j - 1] === 0 && board[i - 2][j - 2] === -1)
                 {
                     return true;
                 }
-                if (board[i - 1][j + 1] === 0 && board[i - 2][j + 2] === -1)
+                if (board[i - 1][j + 1] !== undefined && board[i - 2][j + 2] === -1 !== undefined && 
+                    board[i - 1][j + 1] === 0 && board[i - 2][j + 2] === -1)
                 {
                     return true;
                 }
@@ -76,11 +78,13 @@ export function lightCanEat(board)
             if (board[i][j] === 0 || board[i][j] === 100)
             {
                 // if the neighboring diag is dark and next diag space is vacant
-                if (board[i + 1][j - 1] === 1 && board[i + 2][j - 2] === -1)
+                if (board[i + 1][j - 1] !== undefined && board[i + 2][j - 2] !== undefined && 
+                    board[i + 1][j - 1] === 1 && board[i + 2][j - 2] === -1)
                 {
                     return true;
                 }
-                if (board[i + 1][j + 1] === 1 && board[i + 2][j + 2] === -1)
+                if (board[i + 1][j + 1] !== undefined && board[i + 2][j + 2] !== undefined && 
+                    board[i + 1][j + 1] === 1 && board[i + 2][j + 2] === -1)
                 {
                     return true;
                 }
