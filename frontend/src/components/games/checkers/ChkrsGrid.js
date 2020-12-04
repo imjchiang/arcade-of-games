@@ -56,7 +56,7 @@ const ChkrsGrid = (props) =>
         // console.log(props.selectedCoords);
         let theBoard = props.board;
 
-        if (props.pieceSelected !== undefined)
+        if (props.pieceSelected !== undefined && props.selectedCoords !== undefined)
         {
             if (props.turn === "dark")
             {

@@ -43,7 +43,7 @@ export function validCaptureLight(board, selectedX, selectedY, moveToX, moveToY)
 export function darkCanEat(board)
 {
     // loop through entire board
-    for (let i = 0; i < board.length; i++)
+    for (let i = 2; i < board.length; i++)
     {
         for (let j = 0; j < board[i].length; j++)
         {
@@ -68,7 +68,7 @@ export function darkCanEat(board)
 export function lightCanEat(board)
 {
     // loop through entire board
-    for (let i = 0; i < board.length; i++)
+    for (let i = 0; i < board.length - 2; i++)
     {
         for (let j = 0; j < board[i].length; j++)
         {
