@@ -8,6 +8,10 @@ import DarkSquareLight from "./pictures/DarkSquareLight.png";
 import DarkSquareDark from "./pictures/DarkSquareDark.png";
 import DarkSquareLightClick from "./pictures/DarkSquareLightClick.png";
 import DarkSquareDarkClick from "./pictures/DarkSquareDarkClick.png";
+import DarkKing from "./pictures/DarkKing.png";
+import LightKing from "./pictures/LightKing.png";
+import DarkKingClick from "./pictures/DarkKingClick.png";
+import LightKingClick from "./pictures/LightKingClick.png";
 
 const ChkrsGrid = (props) => 
 {
@@ -71,7 +75,15 @@ const ChkrsGrid = (props) =>
                         theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] + 1] = -1;
                     }
                     theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
-                    theBoard[x][y] = 1;
+                    // check if need to create dark king or regular dark
+                    if (x === 0)
+                    {
+                        theBoard[x][y] = 1111;
+                    }
+                    else
+                    {
+                        theBoard[x][y] = 1;
+                    }
                     props.setTurn("light");
                 }
                 if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
@@ -83,7 +95,15 @@ const ChkrsGrid = (props) =>
                     else
                     {
                         theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
-                        theBoard[x][y] = 1;
+                        // check if need to create dark king or regular dark
+                        if (x === 0)
+                        {
+                            theBoard[x][y] = 1111;
+                        }
+                        else
+                        {
+                            theBoard[x][y] = 1;
+                        }
                         props.setTurn("light");
                     }
                 }
@@ -104,7 +124,15 @@ const ChkrsGrid = (props) =>
                     }
 
                     theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
-                    theBoard[x][y] = 0;
+                    // check if need to create light king or regular light
+                    if (x === theBoard.length - 1)
+                    {
+                        theBoard[x][y] = 1000;
+                    }
+                    else
+                    {
+                        theBoard[x][y] = 0;
+                    }
                     props.setTurn("dark");
                 }
                 else if (validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
@@ -116,13 +144,22 @@ const ChkrsGrid = (props) =>
                     else
                     {
                         theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
-                        theBoard[x][y] = 0;
+                        // check if need to create light king or regular light
+                        if (x === theBoard.length - 1)
+                        {
+                            theBoard[x][y] = 1000;
+                        }
+                        else
+                        {
+                            theBoard[x][y] = 0;
+                        }
                         props.setTurn("dark");
                     }
                 }
             }
         }
 
+        // unselect all pieces that are selected
         for (let i = 0; i < theBoard.length; i++)
         {
             for (let j = 0; j < theBoard[i].length; j++)
@@ -177,6 +214,22 @@ const ChkrsGrid = (props) =>
                                     if (col === 111)
                                     {
                                         return <img className="checker-square" src={DarkSquareDarkClick} />;
+                                    }
+                                    if (col === 1000)
+                                    {
+                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "light")} src={LightKing} />;
+                                    }
+                                    if (col === 1111)
+                                    {
+                                        return <img className="checker-square" onClick={() => handleBoardClick(idx, idy, "dark")} src={DarkKing} />;
+                                    }
+                                    if (col === 8888)
+                                    {
+                                        return <img className="checker-square" src={LightKing} />;
+                                    }
+                                    if (col === 9999)
+                                    {
+                                        return <img className="checker-square" src={DarkKing} />;
                                     }
                                 })
                             }
