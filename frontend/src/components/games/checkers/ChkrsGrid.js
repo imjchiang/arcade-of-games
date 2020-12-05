@@ -94,7 +94,7 @@ const ChkrsGrid = (props) =>
             if (props.turn === "dark")
             {
                 // check if any dark pieces can capture any light pieces
-                if (validCaptureDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
+                if (validCaptureDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
@@ -122,7 +122,7 @@ const ChkrsGrid = (props) =>
                 // check for valid move for dark piece
                 if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
-                    if (darkCanEat(theBoard))
+                    if (darkCanEat(theBoard, props.pieceSelected))
                     {
                         console.log("POSITION IS INVALID. MUST CAPTURE PIECE WHEN CAPTURING IS POSSIBLE.");
                     }
@@ -148,7 +148,7 @@ const ChkrsGrid = (props) =>
             if (props.turn === "light")
             {
                 // check if any light pieces can capture any dark pieces
-                if (validCaptureLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y))
+                if (validCaptureLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
@@ -176,7 +176,7 @@ const ChkrsGrid = (props) =>
                 // check for valid move for light piece
                 else if (validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
-                    if (lightCanEat(theBoard))
+                    if (lightCanEat(theBoard, props.pieceSelected))
                     {
                         console.log("POSITION IS INVALID. MUST CAPTURE PIECE WHEN CAPTURING IS POSSIBLE.");
                     }
