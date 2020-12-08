@@ -96,9 +96,31 @@ const ChkrsGrid = (props) =>
                 // check if any dark pieces can capture any light pieces
                 if (validCaptureDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
+                    // if piece is king
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
-                    if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
+                    if (props.pieceSelected === "darkK")
+                    {
+                        if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
+                        {
+                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] - 1] = -1;
+                        }
+                        else if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] + 2 === y)
+                        {
+                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] + 1] = -1;
+                        }
+                        else if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
+                        {
+                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] - 1] = -1;
+                        }
+                        else
+                        {
+                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] + 1] = -1;
+                        }
+                    }
+                    // confirm the captured piece is between the original position and final position
+                    // set captured piece to dark square
+                    else if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
                     {
                         theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] - 1] = -1;
                     }
@@ -120,9 +142,9 @@ const ChkrsGrid = (props) =>
                     props.setTurn("light");
                 }
                 // check for valid move for dark piece
-                if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
+                else if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
-                    if (darkCanEat(theBoard, props.pieceSelected))
+                    if (darkCanEat(theBoard))
                     {
                         console.log("POSITION IS INVALID. MUST CAPTURE PIECE WHEN CAPTURING IS POSSIBLE.");
                     }
@@ -150,9 +172,31 @@ const ChkrsGrid = (props) =>
                 // check if any light pieces can capture any dark pieces
                 if (validCaptureLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
+                    // if piece is king
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
-                    if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
+                    if (props.pieceSelected === "lightK")
+                    {
+                        if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
+                        {
+                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] - 1] = -1;
+                        }
+                        else if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] + 2 === y)
+                        {
+                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] + 1] = -1;
+                        }
+                        else if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
+                        {
+                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] - 1] = -1;
+                        }
+                        else
+                        {
+                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] + 1] = -1;
+                        }
+                    }
+                    // confirm the captured piece is between the original position and final position
+                    // set captured piece to dark square
+                    else if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
                     {
                         theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] - 1] = -1;
                     }
@@ -176,7 +220,7 @@ const ChkrsGrid = (props) =>
                 // check for valid move for light piece
                 else if (validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
                 {
-                    if (lightCanEat(theBoard, props.pieceSelected))
+                    if (lightCanEat(theBoard))
                     {
                         console.log("POSITION IS INVALID. MUST CAPTURE PIECE WHEN CAPTURING IS POSSIBLE.");
                     }
