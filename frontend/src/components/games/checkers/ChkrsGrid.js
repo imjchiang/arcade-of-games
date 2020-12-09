@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react';
 
 import {validMoveDark, validMoveLight, validCaptureDark, validCaptureLight, darkCanEat, lightCanEat} from "./ChkrsMove";
+import {darkCap, lightCap} from "./ChkrsCap";
 
 import LightSquare from "./pictures/LightSquare.png";
 import DarkSquare from "./pictures/DarkSquare.png";
@@ -87,9 +88,76 @@ const ChkrsGrid = (props) =>
         // console.log(props.selectedCoords);
         let theBoard = props.board;
 
-        if (props.multiJump !== null)
+        if (props.multiJump !== null && props.pieceSelected !== undefined)
         {
             console.log("Multi Jump Possible");
+            if (props.selectedCoords[0] === props.multiJump[1] && props.selectedCoords[1] === props.multiJump[2])
+            {
+                if (props.multiJump[0] === "dark" || props.multiJump[0] === "darkK")
+                {
+                    // [props.pieceSelected, x, y]
+                    // check if any dark pieces can capture any light pieces
+                    if (validCaptureDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
+                    {
+                        // if piece is king
+                        // confirm the captured piece is between the original position and final position
+                        // set captured piece to dark square
+                        // confirm the captured piece is between the original position and final position
+                        // set captured piece to dark square
+                        // set original position to dark square
+                        // check if need to create dark king or regular dark
+                        darkCap(theBoard, props.pieceSelected, props.selectedCoords, x, y);
+
+                        // check if multi-jump is possible
+                        if (validCaptureDark(theBoard, x, y, x + 2, y + 2, props.pieceSelected) || 
+                            validCaptureDark(theBoard, x, y, x + 2, y - 2, props.pieceSelected) || 
+                            validCaptureDark(theBoard, x, y, x - 2, y - 2, props.pieceSelected) || 
+                            validCaptureDark(theBoard, x, y, x - 2, y + 2, props.pieceSelected))
+                        {
+                            props.setMultiJump([props.pieceSelected, x, y]);
+                        }
+                        else
+                        {
+                            props.setMultiJump(null);
+                            props.setTurn("light");
+                        }
+                    }
+                }
+                if (props.multiJump[0] === "light" || props.multiJump[0] === "lightK")
+                {
+                    // [props.pieceSelected, x, y]
+                    // check if any light pieces can capture any dark pieces
+                    if (validCaptureLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
+                    {
+                        // if piece is king
+                        // confirm the captured piece is between the original position and final position
+                        // set captured piece to dark square
+                        // confirm the captured piece is between the original position and final position
+                        // set captured piece to dark square
+                        // set original position to dark square
+                        // check if need to create light king or regular light
+                        lightCap(theBoard, props.pieceSelected, props.selectedCoords, x, y);
+
+                        // check if multi-jump is possible
+                        if (validCaptureLight(theBoard, x, y, x + 2, y + 2, props.pieceSelected) || 
+                            validCaptureLight(theBoard, x, y, x + 2, y - 2, props.pieceSelected) || 
+                            validCaptureLight(theBoard, x, y, x - 2, y - 2, props.pieceSelected) || 
+                            validCaptureLight(theBoard, x, y, x - 2, y + 2, props.pieceSelected))
+                        {
+                            props.setMultiJump([props.pieceSelected, x, y]);
+                        }
+                        else
+                        {
+                            props.setMultiJump(null);
+                            props.setTurn("dark");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                console.log("YOU MUST COMPLETE THE MULTIJUMP MOVE");
+            }
         }
         // check for a selected piece before determining movement of piece
         else if (props.pieceSelected !== undefined && props.selectedCoords !== undefined)
@@ -103,46 +171,11 @@ const ChkrsGrid = (props) =>
                     // if piece is king
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
-                    if (props.pieceSelected === "darkK")
-                    {
-                        if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
-                        {
-                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] - 1] = -1;
-                        }
-                        else if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] + 2 === y)
-                        {
-                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] + 1] = -1;
-                        }
-                        else if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
-                        {
-                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] - 1] = -1;
-                        }
-                        else
-                        {
-                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] + 1] = -1;
-                        }
-                    }
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
-                    else if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
-                    {
-                        theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] - 1] = -1;
-                    }
-                    else
-                    {
-                        theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] + 1] = -1;
-                    }
                     // set original position to dark square
-                    theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
                     // check if need to create dark king or regular dark
-                    if (x === 0 || props.pieceSelected === "darkK")
-                    {
-                        theBoard[x][y] = 1111;
-                    }
-                    else
-                    {
-                        theBoard[x][y] = 1;
-                    }
+                    darkCap(theBoard, props.pieceSelected, props.selectedCoords, x, y);
 
                     // check if multi-jump is possible
                     if (validCaptureDark(theBoard, x, y, x + 2, y + 2, props.pieceSelected) || 
@@ -150,7 +183,7 @@ const ChkrsGrid = (props) =>
                         validCaptureDark(theBoard, x, y, x - 2, y - 2, props.pieceSelected) || 
                         validCaptureDark(theBoard, x, y, x - 2, y + 2, props.pieceSelected))
                     {
-                        props.setMultiJump(props.pieceSelected);
+                        props.setMultiJump([props.pieceSelected, x, y]);
                     }
                     else
                     {
@@ -191,46 +224,11 @@ const ChkrsGrid = (props) =>
                     // if piece is king
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
-                    if (props.pieceSelected === "lightK")
-                    {
-                        if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
-                        {
-                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] - 1] = -1;
-                        }
-                        else if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] + 2 === y)
-                        {
-                            theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] + 1] = -1;
-                        }
-                        else if (props.selectedCoords[0] - 2 === x && props.selectedCoords[1] - 2 === y)
-                        {
-                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] - 1] = -1;
-                        }
-                        else
-                        {
-                            theBoard[props.selectedCoords[0] - 1][props.selectedCoords[1] + 1] = -1;
-                        }
-                    }
                     // confirm the captured piece is between the original position and final position
                     // set captured piece to dark square
-                    else if (props.selectedCoords[0] + 2 === x && props.selectedCoords[1] - 2 === y)
-                    {
-                        theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] - 1] = -1;
-                    }
-                    else
-                    {
-                        theBoard[props.selectedCoords[0] + 1][props.selectedCoords[1] + 1] = -1;
-                    }
                     // set original position to dark square
-                    theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = -1;
                     // check if need to create light king or regular light
-                    if (x === theBoard.length - 1 || props.pieceSelected === "lightK")
-                    {
-                        theBoard[x][y] = 1000;
-                    }
-                    else
-                    {
-                        theBoard[x][y] = 0;
-                    }
+                    lightCap(theBoard, props.pieceSelected, props.selectedCoords, x, y);
 
                     // check if multi-jump is possible
                     if (validCaptureLight(theBoard, x, y, x + 2, y + 2, props.pieceSelected) || 
@@ -238,7 +236,7 @@ const ChkrsGrid = (props) =>
                         validCaptureLight(theBoard, x, y, x - 2, y - 2, props.pieceSelected) || 
                         validCaptureLight(theBoard, x, y, x - 2, y + 2, props.pieceSelected))
                     {
-                        props.setMultiJump(props.pieceSelected);
+                        props.setMultiJump([props.pieceSelected, x, y]);
                     }
                     else
                     {
