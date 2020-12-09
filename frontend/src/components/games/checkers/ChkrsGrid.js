@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from 'react';
 
-import {validMoveDark, validMoveLight, validCaptureDark, validCaptureLight, darkCanEat, lightCanEat} from "./ChkrsMove";
+import {validMoveDark, validMoveLight, validCaptureDark, validCaptureLight, darkCanEat, lightCanEat} from "./ChkrsValidation";
 import {darkCap, lightCap} from "./ChkrsCap";
 
 import LightSquare from "./pictures/LightSquare.png";
