@@ -9,6 +9,7 @@ const Checkers = (props) =>
     const [pieceSelected, setPieceSelected] = useState(undefined);
     const [selectedCoords, setSelectedCoords] = useState(undefined);
     const [turn, setTurn] = useState("dark");
+    const [multiJump, setMultiJump] = useState(null);
     const [board, setBoard] = useState([[null, 0, null, 0, null, 0, null, 0], 
                                       [0, null, 0, null, 0, null, 0, null], 
                                       [null, 0, null, 0, null, 0, null, 0], 
@@ -26,10 +27,12 @@ const Checkers = (props) =>
                 turn={turn} 
                 pieceSelected={pieceSelected}
                 selectedCoords={selectedCoords}
+                multiJump={multiJump}
                 setBoard={setBoard}
                 setTurn={setTurn}
                 setPieceSelected={setPieceSelected}
-                setSelectedCoords={setSelectedCoords} />
+                setSelectedCoords={setSelectedCoords}
+                setMultiJump={setMultiJump} />
         </>
     );
 }

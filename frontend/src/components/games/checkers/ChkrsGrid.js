@@ -87,8 +87,12 @@ const ChkrsGrid = (props) =>
         // console.log(props.selectedCoords);
         let theBoard = props.board;
 
+        if (props.multiJump !== null)
+        {
+            console.log("Multi Jump Possible");
+        }
         // check for a selected piece before determining movement of piece
-        if (props.pieceSelected !== undefined && props.selectedCoords !== undefined)
+        else if (props.pieceSelected !== undefined && props.selectedCoords !== undefined)
         {
             // if it is a dark piece
             if (props.turn === "dark")
@@ -139,7 +143,19 @@ const ChkrsGrid = (props) =>
                     {
                         theBoard[x][y] = 1;
                     }
-                    props.setTurn("light");
+
+                    // check if multi-jump is possible
+                    if (validCaptureDark(theBoard, x, y, x + 2, y + 2, props.pieceSelected) || 
+                        validCaptureDark(theBoard, x, y, x + 2, y - 2, props.pieceSelected) || 
+                        validCaptureDark(theBoard, x, y, x - 2, y - 2, props.pieceSelected) || 
+                        validCaptureDark(theBoard, x, y, x - 2, y + 2, props.pieceSelected))
+                    {
+                        props.setMultiJump(props.pieceSelected);
+                    }
+                    else
+                    {
+                        props.setTurn("light");
+                    }
                 }
                 // check for valid move for dark piece
                 else if (validMoveDark(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
@@ -215,7 +231,19 @@ const ChkrsGrid = (props) =>
                     {
                         theBoard[x][y] = 0;
                     }
-                    props.setTurn("dark");
+
+                    // check if multi-jump is possible
+                    if (validCaptureLight(theBoard, x, y, x + 2, y + 2, props.pieceSelected) || 
+                        validCaptureLight(theBoard, x, y, x + 2, y - 2, props.pieceSelected) || 
+                        validCaptureLight(theBoard, x, y, x - 2, y - 2, props.pieceSelected) || 
+                        validCaptureLight(theBoard, x, y, x - 2, y + 2, props.pieceSelected))
+                    {
+                        props.setMultiJump(props.pieceSelected);
+                    }
+                    else
+                    {
+                        props.setTurn("dark");
+                    }
                 }
                 // check for valid move for light piece
                 else if (validMoveLight(theBoard, props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected))
