@@ -32,6 +32,11 @@ export function validMoveLight(board, selectedX, selectedY, moveToX, moveToY, pi
 
 export function validCaptureDark(board, selectedX, selectedY, moveToX, moveToY, piece)
 {
+    // check undefined behavior
+    if (moveToX < 0 || moveToY < 0 || moveToX > board.length - 1 || moveToY > board.length - 1)
+    {
+        return false;
+    }
     // check vacant position
     // double check position to be moved to is valid with corresponding light (non-king/king) in middle
     // second possibility of above
@@ -59,6 +64,11 @@ export function validCaptureDark(board, selectedX, selectedY, moveToX, moveToY, 
 
 export function validCaptureLight(board, selectedX, selectedY, moveToX, moveToY, piece)
 {
+    // check undefined behavior
+    if (moveToX < 0 || moveToY < 0 || moveToX > board.length - 1 || moveToY > board.length - 1)
+    {
+        return false;
+    }
     // check vacant position
     // double check position to be moved to is valid with corresponding dark (non-king/king) in middle
     // second possibility of above
