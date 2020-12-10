@@ -19,6 +19,7 @@ import About from './components/About';
 import Bbomb from "./components/games/bbomb/Bbomb";
 import Gomoku from './components/games/gomoku/Gomoku';
 import Checkers from './components/games/checkers/Checkers';
+import Chess from './components/games/chess/Chess';
 
 import './App.css';
 
@@ -109,6 +110,12 @@ function App()
                         exact
                         path="/game/checkers" 
                         render={ (props) => <Checkers {...props} user={currentUser}/>} 
+                    />
+
+                    <Route 
+                        exact
+                        path="/game/chess" 
+                        render={ (props) => <Chess {...props} user={currentUser}/>} 
                     />
 
                     <PrivateRoute path="/profile" component={ Profile } user={currentUser} />
