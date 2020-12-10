@@ -5,14 +5,14 @@ import React, { useState } from 'react';
 const Chess = (props) => 
 {
     const [turn, setTurn] = useState("dark");
-    const [board, setBoard] = useState([[5, 3, 3.5, 9, 10, 3.5, 3, 5], 
-                                      [1, 1, 1, 1, 1, 1, 1, 1], 
+    const [board, setBoard] = useState([["LRook", "LKnight", "LBishop", "LQueen", "LKing", "LBishop", "LKnight", "LRook"], 
+                                      ["LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn"], 
                                       [null, null, null, null, null, null, null, null], 
                                       [null, null, null, null, null, null, null, null], 
                                       [null, null, null, null, null, null, null, null], 
                                       [null, null, null, null, null, null, null, null], 
-                                      [10, 10, 10, 10, 10, 10, 10, 10], 
-                                      [50, 30, 35, 90, 100, 35, 30, 50]]);
+                                      ["DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn"], 
+                                      ["DRook", "DKnight", "DBishop", "DQueen", "DKing", "DBishop", "DKnight", "DRook"]]);
 
     return (
         <>
