@@ -1,0 +1,15 @@
+.chess-row
+{
+    display: flex;
+}
+
+.chess-square
+{
+    width: 11vh;
+}
+
+.chess-board
+{
+    width: fit-content;
+    border: 1vh solid black;
+}

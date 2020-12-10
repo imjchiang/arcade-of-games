@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-// import "./chess.css";
+import ChessGrid from "./ChessGrid";
+
+import "./chess.css";
+
 
 const Chess = (props) => 
 {
@@ -17,6 +20,9 @@ const Chess = (props) =>
     return (
         <>
             <h1>Chess</h1>
+            <ChessGrid 
+                board={board}
+                setBoard={setBoard} />
         </>
     );
 }
