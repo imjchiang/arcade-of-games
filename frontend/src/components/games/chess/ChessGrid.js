@@ -40,134 +40,162 @@ const ChkrsGrid = (props) =>
     const forceUpdate = useCallback(() => updateState({}), []);
 
     return (
-        <div className="chess-board">
-            {
-                props.board.map((row, idx) =>
+        <div className="complete-board">
+            <div className="cBoard">
                 {
-                    return(
-                        <span className="chess-row">
-                            {
-                                row.map((col, idy) =>
+                    props.cBoard.map((row, idx) =>
+                    {
+                        return(
+                            <span className="chess-row">
                                 {
-                                    // no piece
-                                    if (col === null)
+                                    row.map((col, idy) =>
                                     {
-                                        return <img className="chess-square" src={Nothing} />;
-                                    }
+                                        // no piece
+                                        if (col === 0)
+                                        {
+                                            return <img className="chess-square" src={LightSquare} />;
+                                        }
+                                        // pawn
+                                        if (col === 1)
+                                        {
+                                            return <img className="chess-square" src={DarkSquare} />;
+                                        }
+                                    })
+                                }
+                            </span>
+                        );
+                    })
+                }
+            </div>
+            <div className="chess-board">
+                {
+                    props.board.map((row, idx) =>
+                    {
+                        return(
+                            <span className="chess-row">
+                                {
+                                    row.map((col, idy) =>
+                                    {
+                                        // no piece
+                                        if (col === null)
+                                        {
+                                            return <img className="chess-square" src={Nothing} />;
+                                        }
 
-                                    // pawn
-                                    if (col === "DPawn")
-                                    {
-                                        return <img className="chess-square" src={DarkPawn} />;
-                                    }
-                                    if (col === "DPawnClick")
-                                    {
-                                        return <img className="chess-square" src={DarkPawnClick} />;
-                                    }
-                                    if (col === "LPawn")
-                                    {
-                                        return <img className="chess-square" src={LightPawn} />;
-                                    }
-                                    if (col === "LPawnClick")
-                                    {
-                                        return <img className="chess-square" src={LightPawnClick} />;
-                                    }
-                                    
-                                    // rook
-                                    if (col === "DRook")
-                                    {
-                                        return <img className="chess-square" src={DarkRook} />;
-                                    }
-                                    if (col === "DRookClick")
-                                    {
-                                        return <img className="chess-square" src={DarkRookClick} />;
-                                    }
-                                    if (col === "LRook")
-                                    {
-                                        return <img className="chess-square" src={LightRook} />;
-                                    }
-                                    if (col === "LRookClick")
-                                    {
-                                        return <img className="chess-square" src={LightRookClick} />;
-                                    }
-                                    
-                                    // knight
-                                    if (col === "DKnight")
-                                    {
-                                        return <img className="chess-square" src={DarkKnight} />;
-                                    }
-                                    if (col === "DKnightClick")
-                                    {
-                                        return <img className="chess-square" src={DarkKnightClick} />;
-                                    }
-                                    if (col === "LKnight")
-                                    {
-                                        return <img className="chess-square" src={LightKnight} />;
-                                    }
-                                    if (col === "LKnightClick")
-                                    {
-                                        return <img className="chess-square" src={LightKnightClick} />;
-                                    }
-                                    
-                                    // bishop
-                                    if (col === "DBishop")
-                                    {
-                                        return <img className="chess-square" src={DarkBishop} />;
-                                    }
-                                    if (col === "DBishopClick")
-                                    {
-                                        return <img className="chess-square" src={DarkBishopClick} />;
-                                    }
-                                    if (col === "LBishop")
-                                    {
-                                        return <img className="chess-square" src={LightBishop} />;
-                                    }
-                                    if (col === "LBishopClick")
-                                    {
-                                        return <img className="chess-square" src={LightBishopClick} />;
-                                    }
+                                        // pawn
+                                        if (col === "DPawn")
+                                        {
+                                            return <img className="chess-square" src={DarkPawn} />;
+                                        }
+                                        if (col === "DPawnClick")
+                                        {
+                                            return <img className="chess-square" src={DarkPawnClick} />;
+                                        }
+                                        if (col === "LPawn")
+                                        {
+                                            return <img className="chess-square" src={LightPawn} />;
+                                        }
+                                        if (col === "LPawnClick")
+                                        {
+                                            return <img className="chess-square" src={LightPawnClick} />;
+                                        }
+                                        
+                                        // rook
+                                        if (col === "DRook")
+                                        {
+                                            return <img className="chess-square" src={DarkRook} />;
+                                        }
+                                        if (col === "DRookClick")
+                                        {
+                                            return <img className="chess-square" src={DarkRookClick} />;
+                                        }
+                                        if (col === "LRook")
+                                        {
+                                            return <img className="chess-square" src={LightRook} />;
+                                        }
+                                        if (col === "LRookClick")
+                                        {
+                                            return <img className="chess-square" src={LightRookClick} />;
+                                        }
+                                        
+                                        // knight
+                                        if (col === "DKnight")
+                                        {
+                                            return <img className="chess-square" src={DarkKnight} />;
+                                        }
+                                        if (col === "DKnightClick")
+                                        {
+                                            return <img className="chess-square" src={DarkKnightClick} />;
+                                        }
+                                        if (col === "LKnight")
+                                        {
+                                            return <img className="chess-square" src={LightKnight} />;
+                                        }
+                                        if (col === "LKnightClick")
+                                        {
+                                            return <img className="chess-square" src={LightKnightClick} />;
+                                        }
+                                        
+                                        // bishop
+                                        if (col === "DBishop")
+                                        {
+                                            return <img className="chess-square" src={DarkBishop} />;
+                                        }
+                                        if (col === "DBishopClick")
+                                        {
+                                            return <img className="chess-square" src={DarkBishopClick} />;
+                                        }
+                                        if (col === "LBishop")
+                                        {
+                                            return <img className="chess-square" src={LightBishop} />;
+                                        }
+                                        if (col === "LBishopClick")
+                                        {
+                                            return <img className="chess-square" src={LightBishopClick} />;
+                                        }
 
-                                    // queen
-                                    if (col === "DQueen")
-                                    {
-                                        return <img className="chess-square" src={DarkQueen} />;
-                                    }
-                                    if (col === "DQueenClick")
-                                    {
-                                        return <img className="chess-square" src={DarkQueenClick} />;
-                                    }
-                                    if (col === "LQueen")
-                                    {
-                                        return <img className="chess-square" src={LightQueen} />;
-                                    }
-                                    if (col === "LQueenClick")
-                                    {
-                                        return <img className="chess-square" src={LightQueenClick} />;
-                                    }
-                                    
-                                    // king
-                                    if (col === "DKing")
-                                    {
-                                        return <img className="chess-square" src={DarkKing} />;
-                                    }
-                                    if (col === "DKingClick")
-                                    {
-                                        return <img className="chess-square" src={DarkKingClick} />;
-                                    }
-                                    if (col === "LKing")
-                                    {
-                                        return <img className="chess-square" src={LightKing} />;
-                                    }
-                                    if (col === "LKingClick")
-                                    {
-                                        return <img className="chess-square" src={LightKingClick} />;
-                                    }
-                                })
-                            }
-                        </span>
-                    );
-                })
-            }
+                                        // queen
+                                        if (col === "DQueen")
+                                        {
+                                            return <img className="chess-square" src={DarkQueen} />;
+                                        }
+                                        if (col === "DQueenClick")
+                                        {
+                                            return <img className="chess-square" src={DarkQueenClick} />;
+                                        }
+                                        if (col === "LQueen")
+                                        {
+                                            return <img className="chess-square" src={LightQueen} />;
+                                        }
+                                        if (col === "LQueenClick")
+                                        {
+                                            return <img className="chess-square" src={LightQueenClick} />;
+                                        }
+                                        
+                                        // king
+                                        if (col === "DKing")
+                                        {
+                                            return <img className="chess-square" src={DarkKing} />;
+                                        }
+                                        if (col === "DKingClick")
+                                        {
+                                            return <img className="chess-square" src={DarkKingClick} />;
+                                        }
+                                        if (col === "LKing")
+                                        {
+                                            return <img className="chess-square" src={LightKing} />;
+                                        }
+                                        if (col === "LKingClick")
+                                        {
+                                            return <img className="chess-square" src={LightKingClick} />;
+                                        }
+                                    })
+                                }
+                            </span>
+                        );
+                    })
+                }
+            </div>
         </div>
     );
 }
