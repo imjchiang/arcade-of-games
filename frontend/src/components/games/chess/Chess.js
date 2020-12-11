@@ -8,6 +8,14 @@ import "./chess.css";
 const Chess = (props) => 
 {
     const [turn, setTurn] = useState("dark");
+    const [cBoard, setCBoard] = useState([[1, 0, 1, 0, 1, 0, 1, 0], 
+                                      [0, 1, 0, 1, 0, 1, 0, 1], 
+                                      [1, 0, 1, 0, 1, 0, 1, 0], 
+                                      [0, 1, 0, 1, 0, 1, 0, 1], 
+                                      [1, 0, 1, 0, 1, 0, 1, 0], 
+                                      [0, 1, 0, 1, 0, 1, 0, 1], 
+                                      [1, 0, 1, 0, 1, 0, 1, 0], 
+                                      [0, 1, 0, 1, 0, 1, 0, 1]]);
     const [board, setBoard] = useState([["LRook", "LKnight", "LBishop", "LQueen", "LKing", "LBishop", "LKnight", "LRook"], 
                                       ["LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn"], 
                                       [null, null, null, null, null, null, null, null], 
@@ -22,7 +30,9 @@ const Chess = (props) =>
             <h1>Chess</h1>
             <ChessGrid 
                 board={board}
-                setBoard={setBoard} />
+                cBoard={cBoard}
+                setBoard={setBoard}
+                setCBoard={setCBoard} />
         </>
     );
 }
