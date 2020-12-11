@@ -8,8 +8,23 @@
     width: 11vh;
 }
 
-.chess-board
+.cBoard
 {
+    position: absolute;
     width: fit-content;
     border: 1vh solid black;
+    background-color: black;
+}
+
+.chess-board
+{
+    position: absolute;
+    width: fit-content;
+    border: 1vh solid rgba(0, 0, 0, 0);
+}
+
+.complete-board
+{
+    display: flex;
+    height: 100vh;
 }
