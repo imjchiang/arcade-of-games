@@ -8,22 +8,22 @@ import "./chess.css";
 const Chess = (props) => 
 {
     const [turn, setTurn] = useState("dark");
-    const [cBoard, setCBoard] = useState([[1, 0, 1, 0, 1, 0, 1, 0], 
-                                      [0, 1, 0, 1, 0, 1, 0, 1], 
+    const [cBoard, setCBoard] = useState([[0, 1, 0, 1, 0, 1, 0, 1], 
                                       [1, 0, 1, 0, 1, 0, 1, 0], 
                                       [0, 1, 0, 1, 0, 1, 0, 1], 
                                       [1, 0, 1, 0, 1, 0, 1, 0], 
                                       [0, 1, 0, 1, 0, 1, 0, 1], 
                                       [1, 0, 1, 0, 1, 0, 1, 0], 
-                                      [0, 1, 0, 1, 0, 1, 0, 1]]);
-    const [board, setBoard] = useState([["LRook", "LKnight", "LBishop", "LQueen", "LKing", "LBishop", "LKnight", "LRook"], 
-                                      ["LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn"], 
-                                      [null, null, null, null, null, null, null, null], 
-                                      [null, null, null, null, null, null, null, null], 
-                                      [null, null, null, null, null, null, null, null], 
-                                      [null, null, null, null, null, null, null, null], 
+                                      [0, 1, 0, 1, 0, 1, 0, 1],
+                                      [1, 0, 1, 0, 1, 0, 1, 0]]);
+    const [board, setBoard] = useState([["DRook", "DKnight", "DBishop", "DQueen", "DKing", "DBishop", "DKnight", "DRook"], 
                                       ["DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn"], 
-                                      ["DRook", "DKnight", "DBishop", "DQueen", "DKing", "DBishop", "DKnight", "DRook"]]);
+                                      [null, null, null, null, null, null, null, null], 
+                                      [null, null, null, null, null, null, null, null], 
+                                      [null, null, null, null, null, null, null, null], 
+                                      [null, null, null, null, null, null, null, null], 
+                                      ["LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn"], 
+                                      ["LRook", "LKnight", "LBishop", "LQueen", "LKing", "LBishop", "LKnight", "LRook"]]);
 
     return (
         <>
