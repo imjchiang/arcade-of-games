@@ -39,6 +39,37 @@ const ChkrsGrid = (props) =>
     const [, updateState] = useState();
     const forceUpdate = useCallback(() => updateState({}), []);
 
+    const handleVacantClick = (x, y) =>
+    {
+        let theBoard = props.board;
+
+        for (let i = 0; theBoard.length; i++)
+        {
+            for (let j = 0; theBoard[i].length; j++)
+            {
+                if (theBoard[i][j] === "DPawnClick")
+                {
+                    theBoard[i][j] = "DPawn";
+                }
+            }
+        }
+        
+        props.setBoard(theBoard);
+        forceUpdate();
+    }
+
+    const handleChessPieceClick = (x, y, piece) =>
+    {
+        let theBoard = props.board;
+
+        if (theBoard[x][y] === "DPawn")
+        {
+            theBoard[x][y] = "DPawnClick";
+        }
+        props.setBoard(theBoard);
+        forceUpdate();
+    }
+
     return (
         <div className="complete-board">
             <div className="cBoard">
@@ -79,13 +110,13 @@ const ChkrsGrid = (props) =>
                                         // no piece
                                         if (col === null)
                                         {
-                                            return <img className="chess-square" src={Nothing} />;
+                                            return <img className="chess-square" onClick={() => handleVacantClick(idx, idy)} src={Nothing} />;
                                         }
 
                                         // pawn
                                         if (col === "DPawn")
                                         {
-                                            return <img className="chess-square" src={DarkPawn} />;
+                                            return <img className="chess-square" onClick={() => handleChessPieceClick(idx, idy, col)} src={DarkPawn} />;
                                         }
                                         if (col === "DPawnClick")
                                         {
