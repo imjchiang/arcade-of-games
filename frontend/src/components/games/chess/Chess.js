@@ -8,6 +8,8 @@ import "./chess.css";
 const Chess = (props) => 
 {
     const [turn, setTurn] = useState("dark");
+    const [pieceSelected, setPieceSelected] = useState(undefined);
+    const [selectedCoords, setSelectedCoords] = useState(undefined);
     const [cBoard, setCBoard] = useState([[0, 1, 0, 1, 0, 1, 0, 1], 
                                       [1, 0, 1, 0, 1, 0, 1, 0], 
                                       [0, 1, 0, 1, 0, 1, 0, 1], 
@@ -31,8 +33,12 @@ const Chess = (props) =>
             <ChessGrid 
                 board={board}
                 cBoard={cBoard}
+                pieceSelected={pieceSelected}
+                selectedCoords={selectedCoords}
                 setBoard={setBoard}
-                setCBoard={setCBoard} />
+                setCBoard={setCBoard}
+                setPieceSelected={setPieceSelected}
+                setSelectedCoords={setSelectedCoords} />
         </>
     );
 }

@@ -43,6 +43,7 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
 
+        // loop through entire board and unselect all pieces
         for (let i = 0; i < theBoard.length; i++)
         {
             for (let j = 0; j < theBoard[i].length; j++)
@@ -56,6 +57,8 @@ const ChkrsGrid = (props) =>
             }
         }
         
+        props.setPieceSelected(undefined);
+        props.setSelectedCoords(undefined);
         props.setBoard(theBoard);
         forceUpdate();
     }
@@ -64,9 +67,25 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
 
+        // loop through entire board and unselect all pieces
+        for (let i = 0; i < theBoard.length; i++)
+        {
+            for (let j = 0; j < theBoard[i].length; j++)
+            {
+                // check if there is a piece on the square, check if the piece is selected (if it has "Click" as the last string of characters)
+                // if true, remove "Click" from the end of that string
+                if (theBoard[i][j] && theBoard[i][j].substring(theBoard[i][j].length - 5, theBoard[i][j].length) === "Click")
+                {
+                    theBoard[i][j] = theBoard[i][j].substring(0, theBoard[i][j].length - 5);
+                }
+            }
+        }
+
         if (theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click")
         {
             theBoard[x][y] += "Click";
+            props.setPieceSelected(piece);
+            props.setSelectedCoords([x, y]);
         }
         props.setBoard(theBoard);
         forceUpdate();
