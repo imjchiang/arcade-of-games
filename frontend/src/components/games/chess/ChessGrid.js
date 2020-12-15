@@ -47,9 +47,9 @@ const ChkrsGrid = (props) =>
         {
             for (let j = 0; j < theBoard[i].length; j++)
             {
-                if (theBoard[i][j] === "DPawnClick")
+                if (theBoard[i][j] && theBoard[i][j].substring(theBoard[i][j].length - 5, theBoard[i][j].length) === "Click")
                 {
-                    theBoard[i][j] = "DPawn";
+                    theBoard[i][j] = theBoard[i][j].substring(0, theBoard[i][j].length - 5);
                 }
             }
         }
