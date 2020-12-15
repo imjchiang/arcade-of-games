@@ -43,9 +43,9 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
 
-        for (let i = 0; theBoard.length; i++)
+        for (let i = 0; i < theBoard.length; i++)
         {
-            for (let j = 0; theBoard[i].length; j++)
+            for (let j = 0; j < theBoard[i].length; j++)
             {
                 if (theBoard[i][j] === "DPawnClick")
                 {
