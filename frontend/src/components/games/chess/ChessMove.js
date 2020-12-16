@@ -20,6 +20,10 @@ export function allPiecesMove(pieceX, pieceY, moveX, moveY, piece, board)
     {
         return queenMove(pieceX, pieceY, moveX, moveY, piece, board);
     }
+    if (piece.substring(1, 5) === "King")
+    {
+        return kingMove(pieceX, pieceY, moveX, moveY, piece, board);
+    }
 }
 
 export function pawnMove(pieceX, pieceY, moveX, moveY, piece, board)
@@ -255,5 +259,30 @@ export function queenMove(pieceX, pieceY, moveX, moveY, piece, board)
     }
     console.log("invalid QUEEN move");
     console.log("+++++++++++++++++++++++++++");
+    return false;
+}
+
+export function kingMove(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("---------------------------");
+    console.log("checking KING movement");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    if ((pieceX === moveX - 1 && pieceY === moveY) || 
+        (pieceX === moveX + 1 && pieceY === moveY) || 
+        (pieceX === moveX && pieceY === moveY - 1) || 
+        (pieceX === moveX && pieceY === moveY + 1))
+    {
+        console.log("valid KING movement")
+        return true;
+    }
+    if ((pieceX === moveX - 1 && pieceY === moveY - 1) || 
+        (pieceX === moveX + 1 && pieceY === moveY + 1) || 
+        (pieceX === moveX + 1 && pieceY === moveY - 1) || 
+        (pieceX === moveX - 1&& pieceY === moveY + 1))
+    {
+        console.log("valid KING movement")
+        return true;
+    }
+    console.log("invalid KING move");
     return false;
 }
