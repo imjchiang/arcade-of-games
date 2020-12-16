@@ -34,6 +34,8 @@ import DarkKingClick from "./pictures/DarkKingClick.png";
 import LightKing from "./pictures/LightKing.png";
 import LightKingClick from "./pictures/LightKingClick.png";
 
+import {allPiecesMove} from "./ChessMove";
+
 const ChkrsGrid = (props) => 
 {
     const [, updateState] = useState();
