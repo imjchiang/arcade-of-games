@@ -45,6 +45,12 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
 
+        if (props.selectedCoords && allPiecesMove(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
+        {
+            theBoard[x][y] = props.pieceSelected;
+            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+        }
+
         // loop through entire board and unselect all pieces
         for (let i = 0; i < theBoard.length; i++)
         {
