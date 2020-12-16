@@ -8,6 +8,14 @@ export function allPiecesMove(pieceX, pieceY, moveX, moveY, piece, board)
     {
         return rookMove(pieceX, pieceY, moveX, moveY, piece, board);
     }
+    if (piece.substring(1, 7) === "Knight")
+    {
+        return knightMove(pieceX, pieceY, moveX, moveY, piece, board);
+    }
+    if (piece.substring(1, 7) === "Bishop")
+    {
+        return bishopMove(pieceX, pieceY, moveX, moveY, piece, board);
+    }
 }
 
 export function pawnMove(pieceX, pieceY, moveX, moveY, piece, board)
@@ -123,5 +131,110 @@ export function rookMove(pieceX, pieceY, moveX, moveY, piece, board)
         return true;
     }
     console.log("invalid ROOK move");
+    return false;
+}
+
+export function knightMove(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("temp");
+}
+
+export function bishopMove(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("---------------------------");
+    console.log("checking BISHOP movement");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    if (Math.abs(moveX - pieceX) === Math.abs(moveY - pieceY))
+    {
+        if (moveX < pieceX && moveY < pieceY)
+        {
+            console.log("BISHOP moving UP/LEFT");
+            let i = pieceX - 1;
+            let j = pieceY - 1;
+            while (i >= moveX && j >= moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i--;
+                j--;
+            }
+            console.log("valid BISHOP movement");
+            return true;
+        }
+        else if (moveX > pieceX && moveY > pieceY)
+        {
+            console.log("BISHOP moving DOWN/RIGHT");
+            let i = pieceX + 1;
+            let j = pieceY + 1;
+            while (i <= moveX && j <= moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i++;
+                j++;
+            }
+            console.log("valid BISHOP movement");
+            return true;
+        }
+        else if (moveX < pieceX && moveY > pieceY)
+        {
+            console.log("BISHOP moving UP/RIGHT");
+            let i = pieceX - 1;
+            let j = pieceY + 1;
+            while (i >= moveX && j <= moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i--;
+                j++;
+            }
+            console.log("valid BISHOP movement");
+            return true;
+        }
+        else if (moveX > pieceX && moveY < pieceY)
+        {
+            console.log("BISHOP moving DOWN/LEFT");
+            let i = pieceX + 1;
+            let j = pieceY - 1;
+            while (i <= moveX && j >= moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i++;
+                j--;
+            }
+            console.log("valid BISHOP movement");
+            return true;
+        }
+    }
+    console.log("invalid BISHOP move");
     return false;
 }
