@@ -16,6 +16,10 @@ export function allPiecesMove(pieceX, pieceY, moveX, moveY, piece, board)
     {
         return bishopMove(pieceX, pieceY, moveX, moveY, piece, board);
     }
+    if (piece.substring(1, 6) === "Queen")
+    {
+        return queenMove(pieceX, pieceY, moveX, moveY, piece, board);
+    }
 }
 
 export function pawnMove(pieceX, pieceY, moveX, moveY, piece, board)
@@ -236,5 +240,20 @@ export function bishopMove(pieceX, pieceY, moveX, moveY, piece, board)
         }
     }
     console.log("invalid BISHOP move");
+    return false;
+}
+
+export function queenMove(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("+++++++++++++++++++++++++++");
+    console.log("QUEEN MOVEMENT");
+    if (rookMove(pieceX, pieceY, moveX, moveY, piece, board) || bishopMove(pieceX, pieceY, moveX, moveY, piece, board))
+    {
+        console.log("valid QUEEN move");
+        console.log("+++++++++++++++++++++++++++");
+        return true;
+    }
+    console.log("invalid QUEEN move");
+    console.log("+++++++++++++++++++++++++++");
     return false;
 }
