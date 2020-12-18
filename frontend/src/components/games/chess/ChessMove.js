@@ -144,7 +144,62 @@ export function rookMove(pieceX, pieceY, moveX, moveY, piece, board)
 
 export function knightMove(pieceX, pieceY, moveX, moveY, piece, board)
 {
-    console.log("temp");
+    console.log("---------------------------");
+    console.log("checking KNIGHT movement");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    if (board[moveX][moveY] === null)
+    {
+        if (pieceX + 2 === moveX && pieceY + 1 === moveY)
+        {
+            console.log("KNIGHT moving DOWN2/RIGHT");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX + 2 === moveX && pieceY - 1 === moveY)
+        {
+            console.log("KNIGHT moving DOWN2/LEFT");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX - 2 === moveX && pieceY + 1 === moveY)
+        {
+            console.log("KNIGHT moving UP2/RIGHT");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX - 2 === moveX && pieceY - 1 === moveY)
+        {
+            console.log("KNIGHT moving UP2/LEFT");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX + 1 === moveX && pieceY + 2 === moveY)
+        {
+            console.log("KNIGHT moving DOWN/RIGHT2");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX + 1 === moveX && pieceY - 2 === moveY)
+        {
+            console.log("KNIGHT moving DOWN/LEFT2");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX - 1 === moveX && pieceY + 2 === moveY)
+        {
+            console.log("KNIGHT moving UP/RIGHT2");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+        else if (pieceX - 1 === moveX && pieceY - 2 === moveY)
+        {
+            console.log("KNIGHT moving UP/LEFT2");
+            console.log("valid KNIGHT movement");
+            return true;
+        }
+    }
+    console.log("invalid KNIGHT move");
+    return false;
 }
 
 export function bishopMove(pieceX, pieceY, moveX, moveY, piece, board)
