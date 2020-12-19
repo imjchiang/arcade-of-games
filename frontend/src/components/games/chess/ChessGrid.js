@@ -74,11 +74,13 @@ const ChkrsGrid = (props) =>
 
     const handleChessPieceClick = (x, y, piece) =>
     {
+        let capture = false;
         let theBoard = props.board;
 
         // capture piece logic
         if (props.selectedCoords && allPiecesCap(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
         {
+            capture = true;
             theBoard[x][y] = props.pieceSelected;
             theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
         }
@@ -97,7 +99,7 @@ const ChkrsGrid = (props) =>
             }
         }
 
-        if (theBoard[x][y] !== null && theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click")
+        if (theBoard[x][y] !== null && theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click" && !capture)
         {
             theBoard[x][y] += "Click";
             props.setPieceSelected(piece);
