@@ -14,11 +14,11 @@ export function allPiecesCap(pieceX, pieceY, moveX, moveY, piece, board)
     }
     if (piece.substring(1, 7) === "Bishop")
     {
-        return;
+        return bishopCap(pieceX, pieceY, moveX, moveY, piece, board);
     }
     if (piece.substring(1, 6) === "Queen")
     {
-        return;
+        return queenCap(pieceX, pieceY, moveX, moveY, piece, board);
     }
     if (piece.substring(1, 5) === "King")
     {
@@ -62,8 +62,8 @@ export function rookCap(pieceX, pieceY, moveX, moveY, piece, board)
     console.log("checking ROOK capture");
     // need to implement for castling later
     console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
-    if ((piece.substring(0, 5) === "DRook" && board[moveX][moveY].substring(0, 1) !== "D") || 
-        (piece.substring(0, 5) === "LRook" && board[moveX][moveY].substring(0, 1) !== "L"))
+    if ((piece.substring(0, 1) === "D" && board[moveX][moveY].substring(0, 1) !== "D") || 
+        (piece.substring(0, 1) === "L" && board[moveX][moveY].substring(0, 1) !== "L"))
     {
         if (pieceX === moveX && moveY > pieceY)
         {
@@ -147,8 +147,8 @@ export function knightCap(pieceX, pieceY, moveX, moveY, piece, board)
     console.log("---------------------------");
     console.log("checking KNIGHT capture");
     console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
-    if ((piece.substring(0, 7) === "DKnight" && board[moveX][moveY].substring(0, 1) !== "D") || 
-        (piece.substring(0, 7) === "LKnight" && board[moveX][moveY].substring(0, 1) !== "L"))
+    if ((piece.substring(0, 1) === "D" && board[moveX][moveY].substring(0, 1) !== "D") || 
+        (piece.substring(0, 1) === "L" && board[moveX][moveY].substring(0, 1) !== "L"))
     {
         if (pieceX + 2 === moveX && pieceY + 1 === moveY)
         {
@@ -200,5 +200,122 @@ export function knightCap(pieceX, pieceY, moveX, moveY, piece, board)
         }
     }
     console.log("invalid KNIGHT move");
+    return false;
+}
+
+export function bishopCap(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("---------------------------");
+    console.log("checking BISHOP capture");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    if (Math.abs(moveX - pieceX) === Math.abs(moveY - pieceY) && 
+        (piece.substring(0, 1) === "D" && board[moveX][moveY].substring(0, 1) !== "D") || 
+        (piece.substring(0, 1) === "L" && board[moveX][moveY].substring(0, 1) !== "L"))
+    {
+        if (moveX < pieceX && moveY < pieceY)
+        {
+            console.log("BISHOP capturing UP/LEFT");
+            let i = pieceX - 1;
+            let j = pieceY - 1;
+            while (i > moveX && j > moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i--;
+                j--;
+            }
+            console.log("valid BISHOP capture");
+            return true;
+        }
+        else if (moveX > pieceX && moveY > pieceY)
+        {
+            console.log("BISHOP capturing DOWN/RIGHT");
+            let i = pieceX + 1;
+            let j = pieceY + 1;
+            while (i < moveX && j < moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i++;
+                j++;
+            }
+            console.log("valid BISHOP capture");
+            return true;
+        }
+        else if (moveX < pieceX && moveY > pieceY)
+        {
+            console.log("BISHOP capturing UP/RIGHT");
+            let i = pieceX - 1;
+            let j = pieceY + 1;
+            while (i > moveX && j < moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i--;
+                j++;
+            }
+            console.log("valid BISHOP capture");
+            return true;
+        }
+        else if (moveX > pieceX && moveY < pieceY)
+        {
+            console.log("BISHOP capturing DOWN/LEFT");
+            let i = pieceX + 1;
+            let j = pieceY - 1;
+            while (i < moveX && j > moveY)
+            {
+                if (board[i][j] === null)
+                {
+                    console.log("no piece obstructing bishop");
+                }
+                else
+                {
+                    console.log("PIECE OBSTRUCTING BISHOP");
+                    return false;
+                }
+                i++;
+                j--;
+            }
+            console.log("valid BISHOP capture");
+            return true;
+        }
+    }
+    console.log("invalid BISHOP move");
+    return false;
+}
+
+export function queenCap(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("+++++++++++++++++++++++++++");
+    console.log("QUEEN CAPTURE");
+    if (rookCap(pieceX, pieceY, moveX, moveY, piece, board) || bishopCap(pieceX, pieceY, moveX, moveY, piece, board))
+    {
+        console.log("valid QUEEN capture");
+        console.log("+++++++++++++++++++++++++++");
+        return true;
+    }
+    console.log("invalid QUEEN capture");
+    console.log("+++++++++++++++++++++++++++");
     return false;
 }
