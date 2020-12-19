@@ -35,6 +35,7 @@ import LightKing from "./pictures/LightKing.png";
 import LightKingClick from "./pictures/LightKingClick.png";
 
 import {allPiecesMove} from "./ChessMove";
+import {allPiecesCap} from "./ChessCap";
 
 const ChkrsGrid = (props) => 
 {
@@ -75,6 +76,13 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
 
+        // capture piece logic
+        if (props.selectedCoords && allPiecesCap(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
+        {
+            theBoard[x][y] = props.pieceSelected;
+            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+        }
+
         // loop through entire board and unselect all pieces
         for (let i = 0; i < theBoard.length; i++)
         {
@@ -89,11 +97,16 @@ const ChkrsGrid = (props) =>
             }
         }
 
-        if (theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click")
+        if (theBoard[x][y] !== null && theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click")
         {
             theBoard[x][y] += "Click";
             props.setPieceSelected(piece);
             props.setSelectedCoords([x, y]);
+        }
+        else
+        {
+            props.setPieceSelected(undefined);
+            props.setSelectedCoords(undefined);
         }
         props.setBoard(theBoard);
         forceUpdate();
