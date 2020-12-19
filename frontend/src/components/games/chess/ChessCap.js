@@ -10,7 +10,7 @@ export function allPiecesCap(pieceX, pieceY, moveX, moveY, piece, board)
     }
     if (piece.substring(1, 7) === "Knight")
     {
-        return;
+        return knightCap(pieceX, pieceY, moveX, moveY, piece, board);
     }
     if (piece.substring(1, 7) === "Bishop")
     {
@@ -62,7 +62,8 @@ export function rookCap(pieceX, pieceY, moveX, moveY, piece, board)
     console.log("checking ROOK capture");
     // need to implement for castling later
     console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
-    if ((piece.substring(0, 5) === "DRook" && board[moveX][moveY].substring(0, 1) !== "D") || (piece.substring(0, 5) === "LRook" && board[moveX][moveY].substring(0, 1) !== "L"))
+    if ((piece.substring(0, 5) === "DRook" && board[moveX][moveY].substring(0, 1) !== "D") || 
+        (piece.substring(0, 5) === "LRook" && board[moveX][moveY].substring(0, 1) !== "L"))
     {
         if (pieceX === moveX && moveY > pieceY)
         {
@@ -139,4 +140,65 @@ export function rookCap(pieceX, pieceY, moveX, moveY, piece, board)
         console.log("invalid ROOK move");
         return false;
     }
+}
+
+export function knightCap(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("---------------------------");
+    console.log("checking KNIGHT capture");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    if ((piece.substring(0, 7) === "DKnight" && board[moveX][moveY].substring(0, 1) !== "D") || 
+        (piece.substring(0, 7) === "LKnight" && board[moveX][moveY].substring(0, 1) !== "L"))
+    {
+        if (pieceX + 2 === moveX && pieceY + 1 === moveY)
+        {
+            console.log("KNIGHT capturing DOWN2/RIGHT");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX + 2 === moveX && pieceY - 1 === moveY)
+        {
+            console.log("KNIGHT capturing DOWN2/LEFT");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX - 2 === moveX && pieceY + 1 === moveY)
+        {
+            console.log("KNIGHT capturing UP2/RIGHT");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX - 2 === moveX && pieceY - 1 === moveY)
+        {
+            console.log("KNIGHT capturing UP2/LEFT");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX + 1 === moveX && pieceY + 2 === moveY)
+        {
+            console.log("KNIGHT capturing DOWN/RIGHT2");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX + 1 === moveX && pieceY - 2 === moveY)
+        {
+            console.log("KNIGHT capturing DOWN/LEFT2");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX - 1 === moveX && pieceY + 2 === moveY)
+        {
+            console.log("KNIGHT capturing UP/RIGHT2");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+        else if (pieceX - 1 === moveX && pieceY - 2 === moveY)
+        {
+            console.log("KNIGHT capturing UP/LEFT2");
+            console.log("valid KNIGHT capture");
+            return true;
+        }
+    }
+    console.log("invalid KNIGHT move");
+    return false;
 }
