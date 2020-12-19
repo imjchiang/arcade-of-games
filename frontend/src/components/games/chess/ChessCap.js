@@ -36,7 +36,7 @@ export function pawnCap(pieceX, pieceY, moveX, moveY, piece, board)
         console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
         // if piece moves in same column one space downwards
         // if piece hops in same column two spaces downwards (confirm piece has not moved before)
-        if (pieceX === moveX - 1 && (pieceY === moveY + 1 || pieceY === moveY - 1))
+        if (pieceX === moveX - 1 && (pieceY === moveY + 1 || pieceY === moveY - 1) && board[moveX][moveY].substring(0, 1) !== "D")
         {
             console.log("valid DARK PAWN capture");
             return true;
@@ -46,7 +46,7 @@ export function pawnCap(pieceX, pieceY, moveX, moveY, piece, board)
     {
         console.log("checking LIGHT PAWN");
         console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
-        if (pieceX === moveX + 1 && (pieceY === moveY + 1 || pieceY === moveY - 1))
+        if (pieceX === moveX + 1 && (pieceY === moveY + 1 || pieceY === moveY - 1) && board[moveX][moveY].substring(0, 1) !== "L")
         {
             console.log("valid LIGHT PAWN capture");
             return true;
