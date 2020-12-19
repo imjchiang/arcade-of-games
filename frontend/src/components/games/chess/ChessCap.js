@@ -22,7 +22,7 @@ export function allPiecesCap(pieceX, pieceY, moveX, moveY, piece, board)
     }
     if (piece.substring(1, 5) === "King")
     {
-        return;
+        return kingCap(pieceX, pieceY, moveX, moveY, piece, board);;
     }
 }
 
@@ -317,5 +317,34 @@ export function queenCap(pieceX, pieceY, moveX, moveY, piece, board)
     }
     console.log("invalid QUEEN capture");
     console.log("+++++++++++++++++++++++++++");
+    return false;
+}
+
+export function kingCap(pieceX, pieceY, moveX, moveY, piece, board)
+{
+    console.log("---------------------------");
+    console.log("checking KING capture");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    if ((piece.substring(0, 1) === "D" && board[moveX][moveY].substring(0, 1) !== "D") || 
+        (piece.substring(0, 1) === "L" && board[moveX][moveY].substring(0, 1) !== "L"))
+    {
+        if ((pieceX === moveX - 1 && pieceY === moveY) || 
+            (pieceX === moveX + 1 && pieceY === moveY) || 
+            (pieceX === moveX && pieceY === moveY - 1) || 
+            (pieceX === moveX && pieceY === moveY + 1))
+        {
+            console.log("valid KING capture")
+            return true;
+        }
+        if ((pieceX === moveX - 1 && pieceY === moveY - 1) || 
+            (pieceX === moveX + 1 && pieceY === moveY + 1) || 
+            (pieceX === moveX + 1 && pieceY === moveY - 1) || 
+            (pieceX === moveX - 1&& pieceY === moveY + 1))
+        {
+            console.log("valid KING capture")
+            return true;
+        }
+    }
+    console.log("invalid KING capture");
     return false;
 }
