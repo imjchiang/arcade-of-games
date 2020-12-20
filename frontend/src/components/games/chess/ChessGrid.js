@@ -35,7 +35,7 @@ import LightKing from "./pictures/LightKing.png";
 import LightKingClick from "./pictures/LightKingClick.png";
 
 import {allPiecesMove} from "./ChessMove";
-import {allPiecesCap} from "./ChessCap";
+import {allPiecesCap, enPassant} from "./ChessCap";
 
 const ChkrsGrid = (props) => 
 {
@@ -46,6 +46,24 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
 
+        // check for undefined behavior and enPassant capture
+        if (props.selectedCoords && enPassant(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
+        {
+            // move capture pawn behind captured pawn
+            theBoard[x][y] = props.pieceSelected;
+            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+            // remove captured pawn from board
+            if (props.pieceSelected.substring(0, 1) === "D")
+            {
+                theBoard[x - 1][y] = null;
+            }
+            else
+            {
+                theBoard[x + 1][y] = null;
+            }
+        }
+
+        // check for undefined behavior and piece movement
         if (props.selectedCoords && allPiecesMove(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
         {
             theBoard[x][y] = props.pieceSelected;
@@ -66,6 +84,9 @@ const ChkrsGrid = (props) =>
             }
         }
         
+        // remove selected piece info
+        // set board
+        // force update
         props.setPieceSelected(undefined);
         props.setSelectedCoords(undefined);
         props.setBoard(theBoard);

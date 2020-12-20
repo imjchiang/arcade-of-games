@@ -348,3 +348,33 @@ export function kingCap(pieceX, pieceY, moveX, moveY, piece, board)
     console.log("invalid KING capture");
     return false;
 }
+
+export function enPassant(pieceX, pieceY, moveX, moveY, piece, board, enPassStat, enPassX, enPassY)
+{
+    console.log("---------------------------");
+    console.log("checking PAWN capture");
+    if (piece.substring(0, 5) === "DPawn")
+    {
+        console.log("checking DARK PAWN");
+        console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+        // if piece moves in same column one space downwards
+        // if piece hops in same column two spaces downwards (confirm piece has not moved before)
+        if (pieceX === 4 && pieceX === moveX - 1 && (pieceY === moveY + 1 || pieceY === moveY - 1) && board[moveX - 1][moveY].substring(0, 1) !== "D")
+        {
+            console.log("valid DARK PAWN capture");
+            return true;
+        }
+    }
+    else if (piece.substring(0, 5) === "LPawn")
+    {
+        console.log("checking LIGHT PAWN");
+        console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+        if (pieceX === 3 && pieceX === moveX + 1 && (pieceY === moveY + 1 || pieceY === moveY - 1) && board[moveX + 1][moveY].substring(0, 1) !== "L")
+        {
+            console.log("valid LIGHT PAWN capture");
+            return true;
+        }
+    }
+    console.log("invalid PAWN capture");
+    return false;
+}
