@@ -7,7 +7,7 @@ import "./chess.css";
 
 const Chess = (props) => 
 {
-    const [turn, setTurn] = useState("dark");
+    const [turn, setTurn] = useState("D");
     const [pieceSelected, setPieceSelected] = useState(undefined);
     const [selectedCoords, setSelectedCoords] = useState(undefined);
     const [cBoard, setCBoard] = useState([[0, 1, 0, 1, 0, 1, 0, 1], 
@@ -18,14 +18,14 @@ const Chess = (props) =>
                                       [1, 0, 1, 0, 1, 0, 1, 0], 
                                       [0, 1, 0, 1, 0, 1, 0, 1],
                                       [1, 0, 1, 0, 1, 0, 1, 0]]);
-    const [board, setBoard] = useState([["DRook", "DKnight", "DBishop", "DQueen", "DKing", "DBishop", "DKnight", "DRook"], 
-                                      ["DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn", "DPawn"], 
+    const [board, setBoard] = useState([["DRook0", "DKnight", "DBishop", "DQueen", "DKing", "DBishop", "DKnight", "DRook1"], 
+                                      ["DPawn0", "DPawn1", "DPawn2", "DPawn3", "DPawn4", "DPawn5", "DPawn6", "DPawn7"], 
                                       [null, null, null, null, null, null, null, null], 
                                       [null, null, null, null, null, null, null, null], 
                                       [null, null, null, null, null, null, null, null], 
                                       [null, null, null, null, null, null, null, null], 
-                                      ["LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn", "LPawn"], 
-                                      ["LRook", "LKnight", "LBishop", "LQueen", "LKing", "LBishop", "LKnight", "LRook"]]);
+                                      ["LPawn0", "LPawn1", "LPawn2", "LPawn3", "LPawn4", "LPawn5", "LPawn6", "LPawn7"], 
+                                      ["LRook0", "LKnight", "LBishop", "LQueen", "LKing", "LBishop", "LKnight", "LRook1"]]);
 
     return (
         <>
@@ -33,10 +33,12 @@ const Chess = (props) =>
             <ChessGrid 
                 board={board}
                 cBoard={cBoard}
+                turn={turn}
                 pieceSelected={pieceSelected}
                 selectedCoords={selectedCoords}
                 setBoard={setBoard}
                 setCBoard={setCBoard}
+                setTurn={setTurn}
                 setPieceSelected={setPieceSelected}
                 setSelectedCoords={setSelectedCoords} />
         </>

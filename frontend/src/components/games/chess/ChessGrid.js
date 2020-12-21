@@ -206,37 +206,37 @@ const ChkrsGrid = (props) =>
                                         }
 
                                         // pawn
-                                        if (col === "DPawn")
+                                        if (col.substring(0, 5) === "DPawn" && col.length < 7)
                                         {
                                             return <img className="chess-square" onClick={() => handleChessPieceClick(idx, idy, col)} src={DarkPawn} />;
                                         }
-                                        if (col === "DPawnClick")
+                                        if (col.substring(0, 5) === "DPawn" && col.substring(6, 11) === "Click")
                                         {
                                             return <img className="chess-square" src={DarkPawnClick} />;
                                         }
-                                        if (col === "LPawn")
+                                        if (col.substring(0, 5) === "LPawn" && col.length < 7)
                                         {
                                             return <img className="chess-square" onClick={() => handleChessPieceClick(idx, idy, col)} src={LightPawn} />;
                                         }
-                                        if (col === "LPawnClick")
+                                        if (col.substring(0, 5) === "LPawn" && col.substring(6, 11) === "Click")
                                         {
                                             return <img className="chess-square" src={LightPawnClick} />;
                                         }
                                         
                                         // rook
-                                        if (col === "DRook")
+                                        if (col.substring(0, 5) === "DRook" && col.length < 7)
                                         {
                                             return <img className="chess-square" onClick={() => handleChessPieceClick(idx, idy, col)} src={DarkRook} />;
                                         }
-                                        if (col === "DRookClick")
+                                        if (col.substring(0, 5) === "DRook" && col.substring(6, 11) === "Click")
                                         {
                                             return <img className="chess-square" src={DarkRookClick} />;
                                         }
-                                        if (col === "LRook")
+                                        if (col.substring(0, 5) === "LRook" && col.length < 7)
                                         {
                                             return <img className="chess-square" onClick={() => handleChessPieceClick(idx, idy, col)} src={LightRook} />;
                                         }
-                                        if (col === "LRookClick")
+                                        if (col.substring(0, 5) === "LRook" && col.substring(6, 11) === "Click")
                                         {
                                             return <img className="chess-square" src={LightRookClick} />;
                                         }
