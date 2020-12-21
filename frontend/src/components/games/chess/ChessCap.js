@@ -349,10 +349,10 @@ export function kingCap(pieceX, pieceY, moveX, moveY, piece, board)
     return false;
 }
 
-export function enPassant(pieceX, pieceY, moveX, moveY, piece, board, enPassStat, enPassX, enPassY)
+export function enPassant(pieceX, pieceY, moveX, moveY, piece, board, enPassant)
 {
     console.log("---------------------------");
-    console.log("checking PAWN capture");
+    console.log("checking PAWN EN PASSANT");
     if (piece.substring(0, 5) === "DPawn")
     {
         console.log("checking DARK PAWN");
@@ -361,8 +361,12 @@ export function enPassant(pieceX, pieceY, moveX, moveY, piece, board, enPassStat
         // if piece hops in same column two spaces downwards (confirm piece has not moved before)
         if (pieceX === 4 && pieceX === moveX - 1 && (pieceY === moveY + 1 || pieceY === moveY - 1) && board[moveX - 1][moveY].substring(0, 1) !== "D")
         {
-            console.log("valid DARK PAWN capture");
-            return true;
+            console.log("Pawn is " + enPassant[0][parseInt(board[moveX - 1][moveY].substring(5, 6))]);
+            if (enPassant[0][parseInt(board[moveX - 1][moveY].substring(5, 6))] === "susceptible")
+            {
+                console.log("valid DARK PAWN EN PASSANT");
+                return true;
+            }
         }
     }
     else if (piece.substring(0, 5) === "LPawn")
@@ -371,10 +375,14 @@ export function enPassant(pieceX, pieceY, moveX, moveY, piece, board, enPassStat
         console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
         if (pieceX === 3 && pieceX === moveX + 1 && (pieceY === moveY + 1 || pieceY === moveY - 1) && board[moveX + 1][moveY].substring(0, 1) !== "L")
         {
-            console.log("valid LIGHT PAWN capture");
-            return true;
+            console.log("Pawn is " + enPassant[1][parseInt(board[moveX + 1][moveY].substring(5, 6))]);
+            if (enPassant[1][parseInt(board[moveX + 1][moveY].substring(5, 6))] === "susceptible")
+            {
+                console.log("valid LIGHT PAWN EN PASSANT");
+                return true;
+            }
         }
     }
-    console.log("invalid PAWN capture");
+    console.log("invalid PAWN EN PASSANT");
     return false;
 }
