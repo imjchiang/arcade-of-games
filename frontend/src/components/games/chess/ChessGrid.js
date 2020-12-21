@@ -45,9 +45,10 @@ const ChkrsGrid = (props) =>
     const handleVacantClick = (x, y) =>
     {
         let theBoard = props.board;
+        // let enPassStat = false;
 
         // check for undefined behavior and enPassant capture
-        if (props.selectedCoords && enPassant(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
+        if (props.selectedCoords && enPassant(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard, true))
         {
             // move capture pawn behind captured pawn
             theBoard[x][y] = props.pieceSelected;
@@ -61,6 +62,15 @@ const ChkrsGrid = (props) =>
             {
                 theBoard[x + 1][y] = null;
             }
+
+            if (props.turn === "D")
+            {
+                props.setTurn("L");
+            }
+            else
+            {
+                props.setTurn("D");
+            }
         }
 
         // check for undefined behavior and piece movement
@@ -68,6 +78,14 @@ const ChkrsGrid = (props) =>
         {
             theBoard[x][y] = props.pieceSelected;
             theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+            if (props.turn === "D")
+            {
+                props.setTurn("L");
+            }
+            else
+            {
+                props.setTurn("D");
+            }
         }
 
         // loop through entire board and unselect all pieces
@@ -104,6 +122,14 @@ const ChkrsGrid = (props) =>
             capture = true;
             theBoard[x][y] = props.pieceSelected;
             theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+            if (props.turn === "D")
+            {
+                props.setTurn("L");
+            }
+            else
+            {
+                props.setTurn("D");
+            }
         }
 
         // loop through entire board and unselect all pieces
@@ -120,7 +146,8 @@ const ChkrsGrid = (props) =>
             }
         }
 
-        if (theBoard[x][y] !== null && theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click" && !capture)
+        if (props.turn === theBoard[x][y].substring(0, 1) && 
+            theBoard[x][y] !== null && theBoard[x][y].substring(theBoard[x][y].length - 5, theBoard[x][y].length) !== "Click" && !capture)
         {
             theBoard[x][y] += "Click";
             props.setPieceSelected(piece);
