@@ -45,10 +45,76 @@ const ChkrsGrid = (props) =>
     const handleVacantClick = (x, y) =>
     {
         let theBoard = props.board;
-        // let enPassStat = false;
+        
+        let lightEnPassant = props.enPassant[0];
+        let darkEnPassant = props.enPassant[1];
+        console.log(props.enPassant);
+
+        if (props.turn === "L")
+        {
+            // check all light pawn status
+            // check if they were susceptible to en passant capture last turn
+            // if true, make them immune now
+            for (let i = 0; i < lightEnPassant.length; i++)
+            {
+                if (lightEnPassant[i] === "susceptible")
+                {
+                    lightEnPassant[i] = "immune";
+                }
+            }
+            // check all light pawns to see if any of them have taken the initial step (not a hop)
+            // if they did not hop, mark them as immune to en passant
+            for (let col = 0; col < theBoard[5].length; col++)
+            {
+                if (theBoard[5][col] && theBoard[5][col].substring(0, 5) === "LPawn")
+                {
+                    lightEnPassant[parseInt(theBoard[5][col].substring(5, 6))] = "immune";
+                }
+            }
+            // check all DARK pawns to see if any of them have taken the hop
+            // if they have taken the hop and are not immune, mark as susceptible
+            for (let col = 0; col < theBoard[3].length; col++)
+            {
+                if (theBoard[3][col] && theBoard[3][col].substring(0, 5) === "DPawn" && darkEnPassant[parseInt(theBoard[3][col].substring(5, 6))] === "unexposed")
+                {
+                    darkEnPassant[parseInt(theBoard[3][col].substring(5, 6))] = "susceptible";
+                }
+            }
+        }
+        if (props.turn === "D")
+        {
+            // check all dark pawn status
+            // check if they were susceptible to en passant capture last turn
+            // if true, make them immune now
+            for (let i = 0; i < darkEnPassant.length; i++)
+            {
+                if (darkEnPassant[i] === "susceptible")
+                {
+                    darkEnPassant[i] = "immune";
+                }
+            }
+            // check all dark pawns to see if any of them have taken the initial step (not a hop)
+            // if they did not hop, mark them as immune to en passant
+            for (let col = 0; col < theBoard[2].length; col++)
+            {
+                if (theBoard[2][col] && theBoard[2][col].substring(0, 5) === "DPawn")
+                {
+                    darkEnPassant[parseInt(theBoard[2][col].substring(5, 6))] = "immune";
+                }
+            }
+            // check all LIGHT pawns to see if any of them have taken the hop
+            // if they have taken the hop and are not immune, mark as susceptible
+            for (let col = 0; col < theBoard[4].length; col++)
+            {
+                if (theBoard[4][col] && theBoard[4][col].substring(0, 5) === "LPawn" && lightEnPassant[parseInt(theBoard[4][col].substring(5, 6))] === "unexposed")
+                {
+                    lightEnPassant[parseInt(theBoard[4][col].substring(5, 6))] = "susceptible";
+                }
+            }
+        }
 
         // check for undefined behavior and enPassant capture
-        if (props.selectedCoords && enPassant(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard, true))
+        if (props.selectedCoords && enPassant(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard, props.enPassant))
         {
             // move capture pawn behind captured pawn
             theBoard[x][y] = props.pieceSelected;
@@ -71,6 +137,8 @@ const ChkrsGrid = (props) =>
             {
                 props.setTurn("D");
             }
+            // set enPassant stats
+            props.setEnPassant([lightEnPassant, darkEnPassant]);
         }
 
         // check for undefined behavior and piece movement
@@ -86,6 +154,8 @@ const ChkrsGrid = (props) =>
             {
                 props.setTurn("D");
             }
+            // set enPassant stats
+            props.setEnPassant([lightEnPassant, darkEnPassant]);
         }
 
         // loop through entire board and unselect all pieces
