@@ -171,6 +171,23 @@ const ChkrsGrid = (props) =>
                 }
             }
         }
+
+        // handle pawn promotion
+        for (let i = 0; i < theBoard[7].length; i++)
+        {
+            if (theBoard[7][i] && theBoard[7][i].substring(0, 5) === "DPawn")
+            {
+                theBoard[7][i] = "DQueen";
+            }
+        }
+
+        for (let i = 0; i < theBoard[0].length; i++)
+        {
+            if (theBoard[0][i] && theBoard[0][i].substring(0, 5) === "LPawn")
+            {
+                theBoard[0][i] = "LQueen";
+            }
+        }
         
         // remove selected piece info
         // set board
@@ -228,6 +245,24 @@ const ChkrsGrid = (props) =>
             props.setPieceSelected(undefined);
             props.setSelectedCoords(undefined);
         }
+
+        // handle pawn promotion
+        for (let i = 0; i < theBoard[7].length; i++)
+        {
+            if (theBoard[7][i] && theBoard[7][i].substring(0, 5) === "DPawn")
+            {
+                theBoard[7][i] = "DQueen";
+            }
+        }
+
+        for (let i = 0; i < theBoard[0].length; i++)
+        {
+            if (theBoard[0][i] && theBoard[0][i].substring(0, 5) === "LPawn")
+            {
+                theBoard[0][i] = "LQueen";
+            }
+        }
+
         props.setBoard(theBoard);
         forceUpdate();
     }
