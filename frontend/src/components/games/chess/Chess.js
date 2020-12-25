@@ -10,6 +10,7 @@ const Chess = (props) =>
     const [turn, setTurn] = useState("D");
     const [pieceSelected, setPieceSelected] = useState(undefined);
     const [selectedCoords, setSelectedCoords] = useState(undefined);
+    const [castling, setCastling] = useState([["unmoved", "unmoved", "unmoved"], ["unmoved", "unmoved", "unmoved"]]);
     const [enPassant, setEnPassant] = useState([["unexposed", "unexposed", "unexposed", "unexposed", "unexposed", "unexposed", "unexposed", "unexposed"], 
                                                 ["unexposed", "unexposed", "unexposed", "unexposed", "unexposed", "unexposed", "unexposed", "unexposed"]]);
     const [cBoard, setCBoard] = useState([[0, 1, 0, 1, 0, 1, 0, 1], 
@@ -39,12 +40,14 @@ const Chess = (props) =>
                 pieceSelected={pieceSelected}
                 selectedCoords={selectedCoords}
                 enPassant={enPassant}
+                castling={castling}
                 setBoard={setBoard}
                 setCBoard={setCBoard}
                 setTurn={setTurn}
                 setPieceSelected={setPieceSelected}
                 setSelectedCoords={setSelectedCoords}
-                setEnPassant={setEnPassant} />
+                setEnPassant={setEnPassant}
+                setCastling={setCastling} />
         </>
     );
 }
