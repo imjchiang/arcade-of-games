@@ -341,3 +341,41 @@ export function kingMove(pieceX, pieceY, moveX, moveY, piece, board)
     console.log("invalid KING move");
     return false;
 }
+
+export function castling(pieceX, pieceY, moveX, moveY, piece, board, castling)
+{
+    console.log("---------------------------");
+    console.log("checking CASTLING movement");
+    console.log("pieceX: " + pieceX + " pieceY: " + pieceY + " moveX: " + moveX + " moveY: " + moveY);
+    // NEED TO IMPLEMENT THROUGH KING-CHECK RULE LATER
+    if (pieceX === moveX)
+    {
+        console.log("KING same row");
+        if (piece === "DKing" && castling[1][2] === "unmoved")
+        {
+            console.log("unmoved DARK KING");
+            if (pieceY === moveY + 2 && !board[0][1] && !board[0][2] && !board[0][3] && castling[1][0] === "unmoved")
+            {
+                return true;
+            }
+            if (pieceY === moveY - 2 && !board[0][5] && !board[0][6] && castling[1][1] === "unmoved")
+            {
+                return true;
+            }
+        }
+        if (piece === "LKing" && castling[0][2] === "unmoved")
+        {
+            console.log("unmoved LIGHT KING");
+            if (pieceY === moveY + 2 && !board[7][1] && !board[7][2] && !board[7][3] && castling[0][0] === "unmoved")
+            {
+                return true;
+            }
+            if (pieceY === moveY - 2 && !board[7][5] && !board[7][6] && castling[0][1] === "unmoved")
+            {
+                return true;
+            }
+        }
+    }
+    console.log("invalid CASTLING move");
+    return false;
+}
