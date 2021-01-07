@@ -34,7 +34,7 @@ import DarkKingClick from "./pictures/DarkKingClick.png";
 import LightKing from "./pictures/LightKing.png";
 import LightKingClick from "./pictures/LightKingClick.png";
 
-import {allPiecesMove} from "./ChessMove";
+import {allPiecesMove, castling} from "./ChessMove";
 import {allPiecesCap, enPassant} from "./ChessCap";
 
 const ChkrsGrid = (props) => 
@@ -46,6 +46,7 @@ const ChkrsGrid = (props) =>
     {
         let theBoard = props.board;
         
+        let iCastling = props.castling;
         let lightEnPassant = props.enPassant[0];
         let darkEnPassant = props.enPassant[1];
         console.log(props.enPassant);
@@ -142,10 +143,44 @@ const ChkrsGrid = (props) =>
         }
 
         // check for undefined behavior and piece movement
-        if (props.selectedCoords && allPiecesMove(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
+        if (props.selectedCoords && (allPiecesMove(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard) || castling(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard, iCastling)))
         {
-            theBoard[x][y] = props.pieceSelected;
-            theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+            if (castling(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard, iCastling))
+            {
+                theBoard[x][y] = props.pieceSelected;
+                theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null
+                if (y < props.selectedCoords[1])
+                {
+                    if (props.turn === "D")
+                    {
+                        theBoard[0][0] = null;
+                        theBoard[0][3] = "DRook0";
+                    }
+                    else
+                    {
+                        theBoard[7][0] = null;
+                        theBoard[7][3] = "LRook0";
+                    }
+                }
+                else
+                {
+                    if (props.turn === "D")
+                    {
+                        theBoard[0][7] = null;
+                        theBoard[0][5] = "DRook1";
+                    }
+                    else
+                    {
+                        theBoard[7][7] = null;
+                        theBoard[7][5] = "LRook1";
+                    }
+                }
+            }
+            else
+            {
+                theBoard[x][y] = props.pieceSelected;
+                theBoard[props.selectedCoords[0]][props.selectedCoords[1]] = null;
+            }
             if (props.turn === "D")
             {
                 props.setTurn("L");
@@ -188,7 +223,35 @@ const ChkrsGrid = (props) =>
                 theBoard[0][i] = "LQueen";
             }
         }
+
+        // handle castling
+        if (!theBoard[7][0] || theBoard[7][0].substring(0, 6) !== "LRook0")
+        {
+            iCastling[0][0] = "moved";
+        }
+        if (!theBoard[7][7] || theBoard[7][7].substring(0, 6) !== "LRook1")
+        {
+            iCastling[0][1] = "moved";
+        }
+        if (!theBoard[7][4] || theBoard[7][4].substring(0, 5) !== "LKing")
+        {
+            iCastling[0][2] = "moved";
+        }
+
+        if (!theBoard[0][0] || theBoard[0][0].substring(0, 6) !== "DRook0")
+        {
+            iCastling[1][0] = "moved";
+        }
+        if (!theBoard[0][7] || theBoard[0][7].substring(0, 6) !== "DRook1")
+        {
+            iCastling[1][1] = "moved";
+        }
+        if (!theBoard[0][4] || theBoard[0][4].substring(0, 5) !== "DKing")
+        {
+            iCastling[1][2] = "moved";
+        }
         
+        props.setCastling(iCastling);
         // remove selected piece info
         // set board
         // force update
@@ -202,6 +265,7 @@ const ChkrsGrid = (props) =>
     {
         let capture = false;
         let theBoard = props.board;
+        let iCastling = props.castling;
 
         // capture piece logic
         if (props.selectedCoords && allPiecesCap(props.selectedCoords[0], props.selectedCoords[1], x, y, props.pieceSelected, theBoard))
@@ -263,6 +327,34 @@ const ChkrsGrid = (props) =>
             }
         }
 
+        // handle castling
+        if (!theBoard[7][0] || theBoard[7][0].substring(0, 6) !== "LRook0")
+        {
+            iCastling[0][0] = "moved";
+        }
+        if (!theBoard[7][7] || theBoard[7][7].substring(0, 6) !== "LRook1")
+        {
+            iCastling[0][1] = "moved";
+        }
+        if (!theBoard[7][4] || theBoard[7][4].substring(0, 5) !== "LKing")
+        {
+            iCastling[0][2] = "moved";
+        }
+
+        if (!theBoard[0][0] || theBoard[0][0].substring(0, 6) !== "DRook0")
+        {
+            iCastling[1][0] = "moved";
+        }
+        if (!theBoard[0][7] || theBoard[0][7].substring(0, 6) !== "DRook1")
+        {
+            iCastling[1][1] = "moved";
+        }
+        if (!theBoard[0][4] || theBoard[0][4].substring(0, 5) !== "DKing")
+        {
+            iCastling[1][2] = "moved";
+        }
+
+        props.setCastling(iCastling);
         props.setBoard(theBoard);
         forceUpdate();
     }
