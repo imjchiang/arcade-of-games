@@ -16,7 +16,6 @@ import Playgames from "./components/Playgames";
 import Home from './components/Home';
 import About from './components/About';
 
-import Bbomb from "./components/games/bbomb/Bbomb";
 import Gomoku from './components/games/gomoku/Gomoku';
 import Checkers from './components/games/checkers/Checkers';
 import Chess from './components/games/chess/Chess';
@@ -92,12 +91,6 @@ function App()
                         exact
                         path="/games/play" 
                         render={ (props) => <Playgames {...props} user={currentUser}/>} 
-                    />
-
-                    <Route 
-                        exact
-                        path="/game/bbomb" 
-                        render={ (props) => <Bbomb {...props} user={currentUser}/>} 
                     />
 
                     <Route 
