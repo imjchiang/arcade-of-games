@@ -1,16 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 html 
 {
     position: relative;
     /* min-height: 100%; */
 }
 
-.navbar, .footer
+body
 {
-    background-color: rgb(134, 247, 232, 0);
-}
-
-body 
-{
+    font-family: "Quicksand", sans-serif;
     margin-bottom: 0; /* Margin bottom by footer height */
     background-color: rgb(149, 255, 206);
     background-image: url("./home-page-piece.png");
@@ -19,151 +17,37 @@ body
     background-position: right bottom;
 }
 
-.footer 
-{
-    /* position: absolute;
-    bottom: 0; */
-    margin-top: 5vh;
-    width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
-    line-height: 60px; /* Vertically center the text there */
-}
-
-
-
 .App 
 {
     text-align: center;
 }
 
-/* .App-main
+.navbar, .footer
 {
-    background-color: rgb(116, 223, 255);
-    border-radius: 0.5vw;
-    padding: 20px;
-    max-height: 90vh;
-    width: fit-content;
+    background-color: rgb(134, 247, 232, 0);
 }
 
-.App-canvas-game
+.navbar-brand
 {
-    position: absolute;
-    background-color: rgba(219, 187, 58, 0.7);
-    border: 5px;
-    border-color: black;
+    font-size: 40px;
+    font-weight: 700;
 }
 
-.App-canvas-bg
+.navbar-toggler:hover
 {
-    background-color: green;
-    border: 5px;
-    border-color: black;
-} */
-
-button 
-{
-    background-color: rgb(34, 20, 95);
-    border: 1px solid rgb(124, 110, 185);
-    color: white;
-    padding: 5px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 5px;
+    background-color: rgb(78, 216, 198);
 }
 
-button:hover
+.nav-item
 {
-    background-color: rgb(104, 80, 212);
+    font-size: 20px;
+    font-weight: 700;
 }
 
-.gomoku
+.footer 
 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0;
-}
-
-#gomoku-board
-{
-    width: 90vh;
-}
-
-.gomoku-grid
-{
-    /* width: 90vh; */
-    margin-top: 2.2vh;
-    position: absolute;
-}
-
-.gomoku-row
-{
-    height: 4.5vh;
-}
-
-.gomoku-box
-{
-    font-size: 0.7vw;
-    margin: 0.2vh;
-    width: 4.1vh;
-}
-
-#hover
-{
-    opacity: 0.5;
-}
-
-/* .gomoku-start
-{
-    background-color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    width: 95vw;
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-.gomoku-quit-button
-{
-    margin-top: 2vh;
-    display: flex;
-    justify-content: center;
-}
-
-.confirm-quit, .confirm-restart, .begin-randomized, .gg, .gomoku-mode-select, .gomoku-piece-select
-{
-    margin: 37vh 0 40vh 0;
-    position: absolute;
-    display: block;
-    text-align: center;
-    background-color: rgb(189, 255, 200);
-    border: 3vh solid rgb(189, 255, 200);
-    border-radius: 2vh;
-}
-
-.confirm-quit-bg, .confirm-restart-bg, .randomize-bg, .gg-bg, .gomoku-mode-bg, .gomoku-piece-bg
-{
-    position: absolute;
-    width: 90vw;
-    height: 95vh;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.gomoku-piece-button
-{
-    width: 10vh;
-    height: 10vh;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gomoku-piece-img
-{
-    width: 7vh;
+    margin-top: 5vh;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
 }

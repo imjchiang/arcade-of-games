@@ -6,6 +6,8 @@
 .home-title
 {
     margin-top: 24vh;
-    font-size: 17vh;
     text-align: center;
+    font-size: 17vh;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
 }
