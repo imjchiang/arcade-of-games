@@ -11,8 +11,7 @@ import Login from './components/Login';
 
 import Profile from './components/Profile';
 
-import Exploregames from './components/Exploregames';
-import Playgames from "./components/Playgames";
+import Playgames from './components/Playgames';
 import Home from './components/Home';
 import About from './components/About';
 
@@ -82,11 +81,6 @@ function App()
                         render={ (props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>} 
                     />
 
-                    <Route 
-                        exact
-                        path="/games/explore" 
-                        render={ (props) => <Exploregames {...props} user={currentUser}/>} 
-                    />
                     <Route 
                         exact
                         path="/games/play" 
