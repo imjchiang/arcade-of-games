@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/About.css";
 
 const About = () => {
     return (
@@ -9,11 +10,13 @@ const About = () => {
                 We offer a selection of board games ranging from Chess to Gomoku and encourage board game enthusiasts to come 
                 and join our community to play with friends and family, or even with other people online.
             </p>
+            <br /><br />
 
             <h1>Development</h1>
             <p>
                 rKD was developed using the MERN technology stack (MongoDB, Express.js, React.js, Node.js). 
             </p>
+            <br /><br />
 
             <h1>About Me</h1>
             <p>

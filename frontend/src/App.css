@@ -9,7 +9,7 @@ html
 body
 {
     font-family: "Quicksand", sans-serif;
-    margin-bottom: 0; /* Margin bottom by footer height */
+    margin-bottom: 9vh; /* Margin bottom by footer height */
     background-color: rgb(149, 255, 206);
     background-image: url("./home-page-piece.png");
     background-repeat: no-repeat;
@@ -23,3 +23,19 @@ body
     /* text-align: center; */
     height: 100vh;
 }
+
+h1
+{
+    color: white;
+    font-size: 6vh;
+    font-weight: 700;
+}
+
+p
+{
+    color: rgb(255, 255, 255);
+    font-size: 2.5vh;
+    font-weight: 800;
+    background-color: rgba(149, 255, 206, 0.342);
+}
+
