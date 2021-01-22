@@ -1,6 +1,6 @@
-.navbar, .footer
+.navbar
 {
-    background-color: rgb(134, 247, 232, 0);
+    background-color: transparent;
 }
 
 .navbar-brand
@@ -23,7 +23,7 @@
 .nav-link
 {
     padding: 0px;
-    border: 8px solid rgba(255, 255, 255, 0);
+    border: 8px solid transparent;
     border-radius: 20px;
     width: fit-content;
     font-weight: 700;
