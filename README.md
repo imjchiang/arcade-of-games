@@ -12,6 +12,7 @@ IN DEVELOPMENT
 > ## Front End
 > - Gomoku multiplayer
 > - Checkers multiplayer
+> - Chess multiplayer
 > - user sign in/verification
 > - basic profile page
 > - pages for games
@@ -23,9 +24,12 @@ IN DEVELOPMENT
 > ## Front End
 > - user profile page
 > - game data for users
+> - win condition for Checkers
+> - win condition for Chess
 > - single player Gomoku
-> - single player Checkers
+> - single player Checkers (potentially remove)
 > - quit, restart, etc.. panels for Checkers
+> - quit, restart, etc.. panels for Chess
 > ## Back End
 > - sockets (for multiplayer online)
 
